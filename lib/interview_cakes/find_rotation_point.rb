@@ -1,6 +1,6 @@
 module FindRotationPoint
   def self.call(words)
-    first_word = words.first  # 找到比较的对象非常重要
+    first_word = words.first  # 找到比较的对象非常重要, 然后用类似这般查找的方法
 
     floor_index = 0
     ceiling_index = words.length - 1
@@ -8,7 +8,7 @@ module FindRotationPoint
     while floor_index < ceiling_index
       guess_point = floor_index + (ceiling_index - floor_index) / 2
 
-      if words[guess_point] >= first_word # 注意 =，也就是 guess_index 跑到最前面的情况
+      if words[guess_point] >= first_word # 注意 =，也就是 guess_point 跑到最前面的情况
         floor_index = guess_point
       else
         ceiling_index = guess_point

@@ -25,3 +25,15 @@ module Algorithms
     end
   end
 end
+
+sorted_array = [1,2,3]
+puts Algorithms::BinarySearch.search(sorted_array, 2)
+sorted_array = [1,2,3,4]
+puts Algorithms::BinarySearch.search(sorted_array, 2)
+puts Algorithms::BinarySearch.search(sorted_array, 1)
+puts Algorithms::BinarySearch.search(sorted_array, 4)
+
+sorted_array = [2]
+puts Algorithms::BinarySearch.search(sorted_array, 2)
+
+puts (0 + (1-0)/2)
