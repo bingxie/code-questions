@@ -1,8 +1,12 @@
+require_relative '../libs/assert_equal'
+extend AssertEqual
+
 def get_max_profit(stock_prices)
   raise ArgumentError, 'requires as least two prices' if stock_prices.length < 2
 
   min_price = stock_prices[0]
-  max_profit = stock_prices[1] - stock_prices[0]
+  first_profit = stock_prices[1] - stock_prices[0]
+  max_profit = first_profit > 0 ? first_profit : 0
 
   stock_prices[1..stock_prices.length].each do |current_price|
     potential_profit = current_price - min_price
@@ -35,7 +39,7 @@ def run_tests
 
   desc = 'price goes down all day'
   actual = get_max_profit([9, 7, 4, 1])
-  expected = -2
+  expected = 0
   assert_equal(actual, expected, desc)
 
   desc = 'price stays the same all day'
@@ -52,23 +56,6 @@ def run_tests
   assert_raises(desc) {
     get_max_profit([1])
   }
-end
-
-def assert_equal(a, b, desc)
-  if a == b
-    puts "#{desc} ... PASS"
-  else
-    puts "#{desc} ... FAIL: #{a} != #{b}"
-  end
-end
-
-def assert_raises(desc)
-  begin
-    yield
-    puts "#{desc} ... FAIL"
-  rescue
-    puts "#{desc} ... PASS"
-  end
 end
 
 run_tests()

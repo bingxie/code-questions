@@ -1,5 +1,4 @@
 require_relative '../libs/assert_equal'
-
 extend AssertEqual
 
 # O(n) time and O(n)O(n) additional space, where nn is the number of items in the merged array.
@@ -42,27 +41,27 @@ end
 
 def run_tests
   desc = 'both arrays are empty'
-  actual = merge_arrays([], [])
+  actual = merge_sorted_arrays([], [])
   expected = []
   assert_equal(actual, expected, desc)
 
   desc = 'first array is empty'
-  actual = merge_arrays([], [1, 2, 3])
+  actual = merge_sorted_arrays([], [1, 2, 3])
   expected = [1, 2, 3]
   assert_equal(actual, expected, desc)
 
   desc = 'second array is empty'
-  actual = merge_arrays([5, 6, 7], [])
+  actual = merge_sorted_arrays([5, 6, 7], [])
   expected = [5, 6, 7]
   assert_equal(actual, expected, desc)
 
   desc = 'both arrays have some numbers'
-  actual = merge_arrays([2, 4, 6], [1, 3, 7])
+  actual = merge_sorted_arrays([2, 4, 6], [1, 3, 7])
   expected = [1, 2, 3, 4, 6, 7]
   assert_equal(actual, expected, desc)
 
   desc = 'arrays are different lengths'
-  actual = merge_arrays([2, 4, 6, 8], [1, 7])
+  actual = merge_sorted_arrays([2, 4, 6, 8], [1, 7])
   expected = [1, 2, 4, 6, 7, 8]
   assert_equal(actual, expected, desc)
 end
