@@ -30,7 +30,7 @@ class String
 end
 
 module AssertEqual
-  def assert_equal(a, b, desc)
+  def assert_equal(a, b, desc = "")
     if a == b
       puts "#{desc} ... #{'PASS'.green}"
     else
@@ -38,7 +38,15 @@ module AssertEqual
     end
   end
 
-  def assert_raises(desc)
+  def assert_true(value, desc = "")
+    puts "#{desc} ... #{value ? 'PASS' : "FAIL: #{value} is not true"}"
+  end
+
+  def assert_false(value, desc = "")
+    puts "#{desc} ... #{value ? "FAIL: #{value} is not false" : 'PASS'}"
+  end
+
+  def assert_raises(desc = '')
     begin
       yield
       puts "#{desc} ... #{'FAIL'.red}"
