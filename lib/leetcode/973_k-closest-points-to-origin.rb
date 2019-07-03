@@ -13,28 +13,40 @@ class Point
   end
 
   def <=>(point)
-    -(distance <=> point.distance)
+    distance <=> point.distance
   end
 
   def to_array
     [@x, @y]
   end
 end
+
+# Time complexity: O(n + (n-k)log(k))
+# Space complexity : O(K)
+
 # @param {Integer[][]} points
 # @param {Integer} k
 # @return {Integer[][]}
 def k_closest(points, k)
-  pq = PriorityQueue.new
+  pq = PriorityQueue.new  #max heap
 
-  points.each do |p|
+  points[0..k-1].each do |p|              # O(k)
     point = Point.new(p[0], p[1])
 
     pq.push(point)
   end
 
+  points[k..points.size-1].each do |p|  #(n-k loop)
+    point = Point.new(p[0], p[1])
+    if point.distance < pq.peek.distance
+      pq.pop
+      pq.push(point)                    # O(log(k)
+    end
+  end # (n-k)*O(log(k))
+
   results = []
 
-  k.times do
+  k.times do        # O(k)
     results << pq.pop.to_array
   end
   results

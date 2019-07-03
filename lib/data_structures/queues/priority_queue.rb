@@ -7,6 +7,10 @@ class PriorityQueue
     @elements.size - 1
   end
 
+  def peek
+    @elements[1]
+  end
+
   def items
     @elements[1..size]
   end
