@@ -36,7 +36,7 @@ def k_closest(points, k)
     pq.push(point)
   end
 
-  points[k..points.size-1].each do |p|  #(n-k loop)
+  points[k..-1].each do |p|  #(n-k loop)
     point = Point.new(p[0], p[1])
     if point.distance < pq.peek.distance
       pq.pop

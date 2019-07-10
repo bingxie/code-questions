@@ -33,7 +33,7 @@ puts Algorithms::BinarySearch.search(sorted_array, 2)
 puts Algorithms::BinarySearch.search(sorted_array, 1)
 puts Algorithms::BinarySearch.search(sorted_array, 4)
 
+# edge case
 sorted_array = [2]
 puts Algorithms::BinarySearch.search(sorted_array, 2)
 
-puts (0 + (1-0)/2)

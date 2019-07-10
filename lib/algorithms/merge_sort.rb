@@ -1,4 +1,4 @@
-def merge_sort(array_to_sort)
+def merge_sort(array_to_sort)   # recursion
 
   # BASE CASE: arrays with fewer than 2 elements are sorted
   if array_to_sort.length < 2
@@ -20,10 +20,10 @@ def merge_sort(array_to_sort)
   sorted_array = []
 
   until sorted_left.empty? && sorted_right.empty? do
-
     # sorted_left's first element comes next
     # if it's less than sorted_right's first
     # element or if sorted_right is empty
+    # 经典的merge 两个sorted array的算法
     if !sorted_left.empty? && (sorted_right.empty? \
         || sorted_left[0] < sorted_right[0])
       sorted_array << sorted_left.shift
