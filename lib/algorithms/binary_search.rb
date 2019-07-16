@@ -37,3 +37,4 @@ puts Algorithms::BinarySearch.search(sorted_array, 4)
 sorted_array = [2]
 puts Algorithms::BinarySearch.search(sorted_array, 2)
 
+
