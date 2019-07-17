@@ -3,7 +3,7 @@ class PriorityQueue
     @elements = [nil]
   end
 
-  def size
+  def last_index
     @elements.size - 1
   end
 
@@ -12,20 +12,20 @@ class PriorityQueue
   end
 
   def items
-    @elements[1..size]
+    @elements[1..last_index]
   end
 
   def push(element)
     @elements << element
-    bubble_up(@elements.size - 1)
+    bubble_up(last_index)
   end
 
   def pop
     # exchange the root with the last element
-    exchange(1, @elements.size - 1)
+    exchange(1, last_index)
 
     # remove the last element of the list
-    max = @elements.pop
+    max = remove_last_child
 
     # and make sure the tree is ordered again
     bubble_down(1)
@@ -34,7 +34,7 @@ class PriorityQueue
   end
 
   # Remvoe the last child
-  def remove
+  def remove_last_child
     @elements.pop
   end
 
@@ -60,10 +60,10 @@ class PriorityQueue
     child_index = (index * 2)
 
     # stop if we reach the bottom of the tree
-    return if child_index > @elements.size - 1
+    return if child_index > last_index
 
     # make sure we get the largest child
-    not_the_last_element = child_index < @elements.size - 1
+    not_the_last_element = child_index < last_index
     left_element = @elements[child_index]
     right_element = @elements[child_index + 1]
     child_index += 1 if not_the_last_element && right_element > left_element

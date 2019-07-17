@@ -1,5 +1,6 @@
 # https://www.interviewcake.com/question/ruby/find-duplicate-optimize-for-space
 
+
 # @param {Integer[]} nums
 # @return {Integer}
 def find_duplicate_number(nums)

@@ -85,17 +85,3 @@ private
     2 * index + 1
   end
 end
-
-heap = Heap.new(:min)
-heap.push(1)
-heap.push(2)
-heap.push(3)
-heap.push(4)
-pp heap.heap
-
-heap = Heap.new(:max)
-heap.push(1)
-heap.push(2)
-heap.push(3)
-heap.push(4)
-pp heap.heap

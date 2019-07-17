@@ -15,10 +15,12 @@ def can_two_movies_fill_flight?(movie_lengths, flight_length)
     matching_second_movie_length = flight_length - first_movie_length
 
     if movie_lengths_seen.include?(matching_second_movie_length)
+
       current_pair = [matching_second_movie_length, first_movie_length]
       if longest_pair
         pre_longest = longest_pair.max
         current_longest = current_pair.max
+
         if current_longest > pre_longest
           longest_pair = current_pair
         end

@@ -18,7 +18,7 @@ def is_valid_bst(root)
 end
 
 def in_order(node, result = [])
-  return nil if node.nil?
+  return [] if node.nil?
 
   if node.left
     in_order(node.left, result)
@@ -31,6 +31,10 @@ def in_order(node, result = [])
 
   return result
 end
+
+# Greedy - DFS solution
+
+# Divide and Conquer - Recursion solution
 
 root = TreeNode.new(2)
 node1 = TreeNode.new(1)
