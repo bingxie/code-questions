@@ -12,6 +12,8 @@ def is_valid(s)
     if left_brackets.include?(c)
       stack.push(c)
     elsif right_brackets.include?(c)
+      return false if stack.empty?
+
       prev = stack.pop
       return false if pairs[prev] != c
     end
@@ -20,8 +22,8 @@ def is_valid(s)
   stack.empty?
 end
 
-puts is_valid("()")
-puts is_valid("()[]{}")
-puts is_valid("(]")
-puts is_valid("([)]")
-puts is_valid("{[]}")
+puts is_valid("()") # true
+puts is_valid("()[]{}") # true
+puts is_valid("(]") # false
+puts is_valid("([)]") # false
+puts is_valid("{[]}") # true
