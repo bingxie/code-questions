@@ -75,7 +75,7 @@ class Trie
         next
       end
       prefix_stack << node.value
-      stack        << :guard_node
+      stack        << :guard_node  # 占位符
       words << prefix_stack.join if node.ending
       node.children.each { |n| stack << n }
       p "stack: #{stack}"
