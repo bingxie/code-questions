@@ -12,7 +12,7 @@ def removeObstacle(numRows, numColumns, lot)
 
   total_distance = 0
 
-  until queue.empty?
+  until queue.empty?   # BFS?
     queue_size = queue.size
 
     queue_size.times do |_i|
