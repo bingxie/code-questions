@@ -29,3 +29,44 @@ end
 
 grid = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
 p num_islands(grid)
+
+def num_islands2(grid)
+  return 0 if grid.empty?
+
+  count = 0
+
+  0.upto(grid.size - 1) do |i|
+    0.upto(grid.first.size - 1) do |j|
+      if grid[i][j] == '1'
+        bfs(i, j, grid)
+        count += 1
+      end
+    end
+  end
+  count
+end
+
+def bfs(i, j, grid)
+  grid[i][j] = '0'
+  directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
+
+  queue = Queue.new
+  queue.push([i, j])
+
+  until queue.empty?
+    r, c = queue.pop
+
+    directions.each do |dr|
+      new_r = r + dr[0]
+      new_c = c + dr[1]
+
+      if new_r >= 0 && new_c >= 0 && new_r < grid.size && new_c < grid.first.size && grid[new_r][new_c] == '1'
+        queue.push([new_r, new_c])
+        grid[new_r][new_c] = '0'
+      end
+    end
+  end
+end
+
+grid = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
+p num_islands2(grid)

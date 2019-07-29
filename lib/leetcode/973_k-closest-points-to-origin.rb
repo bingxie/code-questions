@@ -28,7 +28,7 @@ end
 # @param {Integer} k
 # @return {Integer[][]}
 def k_closest(points, k)
-  pq = PriorityQueue.new  #max heap
+  pq = PriorityQueue.new(:max)
 
   points[0..k-1].each do |p|              # O(k)
     point = Point.new(p[0], p[1])

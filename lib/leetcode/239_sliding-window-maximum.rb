@@ -16,6 +16,7 @@ def max_sliding_window(nums, k)
 
   nums[k..-1].each do |num|
     enqueue(queue, num, k)
+    p queue
     results << queue[0]
   end
 
@@ -23,10 +24,6 @@ def max_sliding_window(nums, k)
 end
 
 def enqueue(queue, num, k)
-  if
-    queue.clear
-  end
-
   current_bigest = queue.first
   if queue.size == k || (current_bigest && current_bigest < num)
     queue.clear
@@ -41,4 +38,4 @@ pp max_sliding_window(nums, k) # [3,3,5,5,6,7]
 
 nums = [7,2,4]
 k = 2
-pp max_sliding_window(nums, k) # [7,4]
+# pp max_sliding_window(nums, k) # [7,4]

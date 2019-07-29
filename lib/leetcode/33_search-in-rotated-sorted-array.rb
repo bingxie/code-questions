@@ -1,3 +1,4 @@
+# Topic: binary search
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer}

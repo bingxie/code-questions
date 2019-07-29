@@ -1,10 +1,12 @@
 class PriorityQueue
-  def initialize
+  def initialize(type = :min)
     @elements = [nil]
-  end
 
-  def last_index
-    @elements.size - 1
+    if type == :min
+      @compare = ->(a,b) { (a <=> b) < 0 }
+    elsif type == :max
+      @compare = ->(a,b) { (a <=> b) > 0 }
+    end
   end
 
   def peek
@@ -33,21 +35,25 @@ class PriorityQueue
     max
   end
 
+  private
+
   # Remvoe the last child
   def remove_last_child
     @elements.pop
   end
 
-  private
+  def last_index
+    @elements.size - 1
+  end
 
   def bubble_up(index)
-    parent_index = (index / 2)
-
     # return if we reach the root element
     return if index <= 1
 
-    # or if the parent is already greater than the child
-    return if @elements[parent_index] >= @elements[index]
+    parent_index = (index / 2)
+
+    # if the parent is already greater|less than the child
+    return if @compare[@elements[parent_index], @elements[index]]
 
     # otherwise we exchange the child with the parent
     exchange(index, parent_index)
@@ -62,15 +68,15 @@ class PriorityQueue
     # stop if we reach the bottom of the tree
     return if child_index > last_index
 
-    # make sure we get the largest child
+    # make sure we get the largest|smallest child
     not_the_last_element = child_index < last_index
     left_element = @elements[child_index]
     right_element = @elements[child_index + 1]
-    child_index += 1 if not_the_last_element && right_element > left_element
+    child_index += 1 if not_the_last_element && @compare[right_element, left_element]
 
-    # there is no need to continue if the parent element is already bigger
+    # there is no need to continue if the parent element is already bigger|smaller
     # then its children
-    return if @elements[index] >= @elements[child_index]
+    return if @compare[@elements[index], @elements[child_index]]
 
     exchange(index, child_index)
 
@@ -83,3 +89,21 @@ class PriorityQueue
     @elements[source], @elements[target] = @elements[target], @elements[source]
   end
 end
+
+pq = PriorityQueue.new(:min)
+
+pq.push(1)
+pq.push(2)
+pq.push(3)
+pq.push(4)
+pq.push(4)
+pq.push(5)
+
+p pq.items
+
+p pq.pop
+p pq.pop
+p pq.pop
+p pq.pop
+p pq.pop
+p pq.pop
