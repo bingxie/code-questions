@@ -1,6 +1,6 @@
 # @param {Character[][]} grid
 # @return {Integer}
-def num_islands(grid)
+def num_islands(grid)   # DFS
   return 0 if grid.empty?
 
   count = 0
@@ -8,7 +8,7 @@ def num_islands(grid)
   0.upto(grid.size - 1) do |i|
     0.upto(grid.first.size - 1) do |j|
       if grid[i][j] == "1"
-        dfs(i, j, grid)
+        dfs(i, j, grid)  # dfs遍历所有 1 node
         count += 1
       end
     end
@@ -30,7 +30,7 @@ end
 grid = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
 p num_islands(grid)
 
-def num_islands2(grid)
+def num_islands2(grid)   # BFS
   return 0 if grid.empty?
 
   count = 0

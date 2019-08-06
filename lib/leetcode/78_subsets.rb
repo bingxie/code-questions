@@ -20,18 +20,17 @@ end
 def subsets2(nums, i = 0)
   result = [[]]
   n = 0
+
   nums.each do |num|
-      n += 1
       len = result.size
       i = 0
       while i < len
-          n += 1
           new_subset = result[i] + [num]
           result << new_subset
           i += 1
       end
   end
-  p n
+
   result
 end
 pp subsets2([1,2,3])

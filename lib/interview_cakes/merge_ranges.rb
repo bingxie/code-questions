@@ -11,7 +11,7 @@ def merge_ranges(intervals)
       merged_meetings << [current_meeting_start, current_meeting_end]
     else
       new_end = [current_meeting_end, last_merged_meeting_end].max
-      merged_meetings[-1] = [last_merged_meeting_start, new_end]
+      merged_meetings[-1] = [last_merged_meeting_start, new_end]  #last
     end
   end
 

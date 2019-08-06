@@ -56,6 +56,7 @@ p can_finish(4, [[3, 2], [3, 1], [2, 0], [1, 0]])
 p can_finish(2, [[1, 0], [0, 1]])
 
 # Ruby BFS  Topological Sort
+
 # @param {Integer} num_courses
 # @param {Integer[][]} prerequisites
 # @return {Boolean}

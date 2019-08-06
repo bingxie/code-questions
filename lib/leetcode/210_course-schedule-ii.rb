@@ -6,6 +6,7 @@ class Graph
   def initialize(num_courses)
     @nodes = {}
     @visited = Set.new
+
     @num_courses = num_courses
     @top_order = []
 
@@ -23,12 +24,13 @@ class Graph
   # BFS tweaked topological sort
   def find_order_bfs
     queue = []
-    @num_courses.times { |v| queue.push(v) if @in_degrees[v].zero? }
+    @num_courses.times { |v| queue.push(v) if @in_degrees[v].zero? }  # 入度为0的全都放入
 
     visited = []
     until queue.empty?
       node_key = queue.shift
-      visited.unshift(node_key)
+
+      visited.unshift(node_key)  # 注意顺序
 
       @nodes[node_key]&.each do |neighbor|
         @in_degrees[neighbor] -= 1

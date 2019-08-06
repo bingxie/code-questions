@@ -43,7 +43,7 @@ def search_in_rotated_sorted_array2(nums, target)
     return mid if nums[mid] == target
 
     if nums[floor] < nums[mid]  # left part is ascending
-      return floor if nums[floor] == target
+      return floor if nums[floor] == target  ### 检查floor，可以快速返回
 
       if nums[floor] < target && target < nums[mid]   # target in left part
         ceiling = mid -1
@@ -51,7 +51,7 @@ def search_in_rotated_sorted_array2(nums, target)
         floor = mid + 1
       end
     else # right part is ascending
-      return ceiling if nums[ceiling] == target
+      return ceiling if nums[ceiling] == target ### 检查ceiling，可以快速返回
 
       if nums[mid] < target && target < nums[ceiling]
         floor = mid + 1

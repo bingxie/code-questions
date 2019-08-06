@@ -34,6 +34,7 @@ class WordDictionary
         children = nodes.map do |node|
           node[char]
         end.compact
+
         return false if children.empty?
 
         nodes = children

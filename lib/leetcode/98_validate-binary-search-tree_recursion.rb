@@ -1,3 +1,4 @@
+# Topic: Binary Search Tree
 # Definition for a binary tree node.
 class TreeNode
     attr_accessor :val, :left, :right
@@ -15,7 +16,7 @@ def is_valid_bst(root, lower_bound = -Float::INFINITY, upper_bound = Float::INFI
   elsif root.val >= upper_bound || root.val <= lower_bound
     return false
   else
-    is_valid_bst(root.left, lower_bound, root.val) &&
+    is_valid_bst(root.left, lower_bound, root.val) &&   # BST的问题，很多都是用递归调用解决
     is_valid_bst(root.right, root.val, upper_bound)
   end
 end

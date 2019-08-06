@@ -19,6 +19,7 @@ def oranges_rotting(grid)
   new_depth = 0
   until queue.empty?
     queue_size = queue.size
+
     queue_size.times do |_i|
       node = queue.pop
 
