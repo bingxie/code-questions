@@ -23,12 +23,6 @@ def serialize(root)
   result
 end
 
-def r_serialize(root)
-  return "None," if root.nil?
-
-  [root.val, r_serialize(root.left_child), r_serialize(root.right_child)].flatten.join(',')
-end
-
 # Decodes your encoded data to tree.
 #
 # @param {string} data
@@ -48,6 +42,12 @@ def des_array(nodes)
   node.right_child = des_array(nodes)
 
   node
+end
+
+def r_serialize(root)
+  return "None," if root.nil?
+
+  [root.val, r_serialize(root.left_child), r_serialize(root.right_child)].flatten.join(',')
 end
 
 node5 = TreeNode.new(5)

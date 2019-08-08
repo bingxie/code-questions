@@ -1,5 +1,6 @@
 def reverse!(string)
   return if string.length < 2
+
   start_index = 0
   end_index = string.length - 1
 

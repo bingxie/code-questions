@@ -9,6 +9,10 @@ class PriorityQueue
     end
   end
 
+  def size
+    last_index
+  end
+
   def peek
     @elements[1]
   end
@@ -89,21 +93,3 @@ class PriorityQueue
     @elements[source], @elements[target] = @elements[target], @elements[source]
   end
 end
-
-pq = PriorityQueue.new(:min)
-
-pq.push(1)
-pq.push(2)
-pq.push(3)
-pq.push(4)
-pq.push(4)
-pq.push(5)
-
-p pq.items
-
-p pq.pop
-p pq.pop
-p pq.pop
-p pq.pop
-p pq.pop
-p pq.pop

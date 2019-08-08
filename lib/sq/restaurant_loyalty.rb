@@ -1,0 +1,2 @@
+# Restaurant loyalty program: three levels (bronze, silver, gold). Customers start at bronze level and can upgrade to silver and gold. Silver needs 2 visits, gold need 3+ visits. Customers can be friends. If one customer upgrades from silver -> gold, his/her friends need to be upgraded by 1 level.
+# Follow-up: how to make the program flexible to add new levels without having to change existing customers.

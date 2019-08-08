@@ -75,7 +75,7 @@ class LRUCache
       @cache[key] = node
       @list.add_node(node)
     else
-      node.value = value # update the value
+      node.value = value       # update the value
       @list.move_to_head(node)
     end
 
