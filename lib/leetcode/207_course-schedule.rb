@@ -5,15 +5,14 @@ class Graph
 
   def initialize
     @nodes = {}
+    @visited = Set.new
+    @top_order = []
   end
 
   # edge: [1, 0]
   def add_edge(edge)
     @nodes[edge.first] ||= Set.new
     @nodes[edge.first] << edge.last
-
-    @visited = Set.new
-    @top_order = []
   end
 
   def topological_order

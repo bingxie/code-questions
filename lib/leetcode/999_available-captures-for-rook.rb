@@ -29,9 +29,9 @@ def num_rook_captures(board)
 end
 
 def find_rook(board)
-  board.each_with_index do |row, i|
-    row.each_with_index do |cell, j|
-      return [i, j] if cell == "R"
+  board.size.times do |i|
+    board.first.size.times do |j|
+      return [i, j] if board[i][j] == "R"
     end
   end
 end

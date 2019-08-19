@@ -16,7 +16,7 @@ def postorder_traversal(root)
   results = []
   until stack.empty?
     node = stack.pop
-    results.unshift(node.val)
+    results.unshift(node.val)   # 从头上放
 
     stack.push node.left if node.left
     stack.push node.right if node.right

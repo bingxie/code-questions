@@ -17,7 +17,7 @@ def removeObstacle(numRows, numColumns, lot)
 
     queue_size.times do |_i|
       node = queue.pop
-      return total_distance if node.val == 9
+      return total_distance if node.val == 9  # find target
 
       # mark as visited
       lot[node.x][node.y] = -1

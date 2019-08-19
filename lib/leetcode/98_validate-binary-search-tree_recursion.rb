@@ -21,10 +21,6 @@ def is_valid_bst(root, lower_bound = -Float::INFINITY, upper_bound = Float::INFI
   end
 end
 
-# Greedy - DFS solution
-
-# Divide and Conquer - Recursion solution
-
 root = TreeNode.new(2)
 node1 = TreeNode.new(1)
 node2 = TreeNode.new(3)

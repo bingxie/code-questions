@@ -49,8 +49,10 @@ class AnimalGame
         end
       end
 
+      avg_score = dup_scores.sum / dup_scores.size.to_f
+
       dup_keys.each do |key|
-        result[key] = dup_scores.sum / dup_scores.size.to_f
+        result[key] = avg_score
       end
     end
 

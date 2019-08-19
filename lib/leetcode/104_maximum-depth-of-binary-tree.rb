@@ -17,7 +17,7 @@ def max_depth(root)  # Recursion
   left_height = max_depth(root.left)
   right_height = max_depth(root.right)
 
-  [left_height, right_height].max + 1
+  [left_height, right_height].max + 1  # 没进入一层都要加1
 end
 
 def max_depth2(root)  # Iteration

@@ -14,6 +14,7 @@ def preorder_traversal(root)
 
   stack = [root]
   results = []
+
   until stack.empty?
     current_node = stack.pop
     results.push current_node.val

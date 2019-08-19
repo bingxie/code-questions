@@ -11,7 +11,6 @@ def play_game(board, moves)
     move_success = false
 
     moves.each do |move|
-
       new_board = execute_move(current_board, move)
 
       if new_board
@@ -39,11 +38,6 @@ def execute_move(board, move)
     return nil if new_board[index] < 0
   end
 
-  # if new_board.any? { |value| value < 0 }
-  #   nil
-  # else
-  #   new_board
-  # end
   new_board
 end
 

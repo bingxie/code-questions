@@ -1,13 +1,12 @@
 class TrieNode < Hash
   attr_accessor :is_end
-  def initialize()
+  def initialize
     super
     @is_end = false
   end
 end
 
 class WordDictionary
-
   attr_reader :root
   def initialize
     @root = TrieNode.new
@@ -26,9 +25,7 @@ class WordDictionary
     word.each_char do |char|
       pp "nodes: #{nodes}"
       if char == '.'
-        children = nodes.map do |node|
-          node.values
-        end.flatten.compact
+        children = nodes.map(&:values).flatten.compact
         nodes = children
       else
         children = nodes.map do |node|
