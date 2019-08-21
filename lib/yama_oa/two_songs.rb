@@ -1,9 +1,7 @@
 require_relative '../libs/assert_equal'
-
 require 'set'
 
 extend AssertEqual
-
 
 # Determine if two movie runtimes add up to the flight length
 def can_two_movies_fill_flight?(movie_lengths, flight_length)
@@ -14,7 +12,7 @@ def can_two_movies_fill_flight?(movie_lengths, flight_length)
   movie_lengths.each do |first_movie_length|
     matching_second_movie_length = flight_length - first_movie_length
 
-    if movie_lengths_seen.include?(matching_second_movie_length)
+    if movie_lengths_seen.include?(matching_second_movie_length) # Find a pair
 
       current_pair = [matching_second_movie_length, first_movie_length]
       if longest_pair
@@ -56,7 +54,7 @@ def run_tests
   assert_equal(result, [3,3], desc)
 
   desc = 'lots of possible pairs, return the longest one'
-  result = can_two_movies_fill_flight?([1, 2, 3, 4, 5, 6], 7)
+  result = can_two_movies_fill_flight?([1, 2, 3, 4, 5, 6], 7) # special case
   pp result
   assert_equal(result, [1, 6], desc)
 

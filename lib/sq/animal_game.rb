@@ -39,6 +39,7 @@ class AnimalGame
       score += 1
     end
 
+    # when there is duplicates, re-calculate the score
     if (duplicates = find_duplicates(animal_count.values))
       dup_scores = []
       dup_keys = []
@@ -64,11 +65,6 @@ class AnimalGame
 
     counts.find_all { |c| !s.add?(c) }
   end
-
-  def output
-    p cows_count
-    p pigs_count
-  end
 end
 
 game = AnimalGame.new
@@ -77,7 +73,6 @@ game.add_record('A', 3, 2)
 game.add_record('B', 5, 1)
 game.add_record('C', 4, 3)
 
-#game.output
 p game.animal_score(game.cows_count)
 p game.animal_score(game.pigs_count)
 

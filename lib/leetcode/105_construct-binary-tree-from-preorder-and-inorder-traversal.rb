@@ -1,10 +1,11 @@
 # Definition for a binary tree node.
 class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left, @right = nil, nil
-    end
+  attr_accessor :val, :left, :right
+  def initialize(val)
+    @val = val
+    @left = nil
+    @right = nil
+  end
 end
 
 # @param {Integer[]} preorder
@@ -26,7 +27,6 @@ def build_tree(preorder, inorder)
 
   node
 end
-
 
 def inorder_traversal2(root, result = [])
   return if root.nil?
@@ -68,12 +68,14 @@ def inorder_traversal(root)
   result
 end
 
+preorder = [3, 9, 20, 15, 7]
 
-preorder = [3,9,20,15,7]
-
-inorder = [9,3,15,20,7]
+inorder = [9, 3, 15, 20, 7]
 
 new_tree = build_tree(preorder, inorder)
 
 p preorder_traversal2(new_tree)
 p inorder_traversal2(new_tree)
+p inorder_traversal(new_tree)
+
+

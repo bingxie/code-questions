@@ -8,18 +8,18 @@ def play_game(board, moves)
 
     current_board = queue.shift
 
-    move_success = false
+    game_over = true
 
     moves.each do |move|
-      new_board = execute_move(current_board, move)
+      new_board = execute_move(current_board, move) # 一定是current_board
 
       if new_board
         queue.push new_board
-        move_success = true
+        game_over = false
       end
     end
 
-    unless move_success # no moves, game over
+    if game_over # no moves, game over
       if current_board[0] > current_board[-1] # first player win
         player1_score += 1
       else
@@ -37,15 +37,13 @@ def execute_move(board, move)
     new_board[index] = value + move[index]
     return nil if new_board[index] < 0
   end
-
+  p new_board
   new_board
 end
-
-p execute_move([1, 4, 2, 4], [-2, -2, 1, 0])
 
 board = [6, 4, 2, 4]
 moves = [[-2, -2, 1, 0],
          [-4, -4, 0, 0],
          [0, 0, -2, -2]]
 
-p play_game(board, moves)
+p play_game(board, moves) # [3, 2]

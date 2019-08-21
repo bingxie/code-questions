@@ -29,7 +29,7 @@ class CatList
     @list.push cat
   end
 
-  def self.search(query_string)
+  def self.search(_query_string)
     # (WEIGHT < 4200 AND HEIGHT > 234) OR (HEIGHT < 235)
     results1 = single_query('WEIGHT', 4200, '<')
     results2 = single_query('HEIGHT', 234, '>')

@@ -40,7 +40,9 @@ def print_top_k_win(matches, k)
     recipe_scores[recipe_items] += 1
   end
 
-  # pp recipe_scores.sort_by {|key, value| value}
+  # result = recipe_scores.sort_by {|key, value| -value}
+  # pp result[0..k-1]
+
   pq = PriorityQueue.new(:min)
   recipe_scores.each do |items, score|
     recipe = Recipe.new(items, score)

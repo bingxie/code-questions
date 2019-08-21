@@ -33,14 +33,14 @@ def sort_forward_list(forward_list)
 end
 
 def run_tests
-  desc = 'short flight'
+  desc = 'two pairs of results'
   forward_list = [[1,3], [2,5], [3,7], [4,10]]
   return_list = [[1,2], [2,3], [3,4], [4,5]]
 
   result = find_best_routes(10, forward_list, return_list)
   assert_equal(result, [[3,2], [2,4]], desc)
 
-  desc = 'short flight'
+  desc = 'one result'
   forward_list = [[1,3], [2,5], [3,7], [4,10]]
   return_list = [[1,2], [2,3], [3,4], [4,5]]
 
