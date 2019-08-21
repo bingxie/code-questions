@@ -29,7 +29,6 @@ p num_decodings("226")
 
 
 # 采用动态规划
-
 def num_decodings2(str)
   length = str.length
   return 1 if length == 1 && str != '0'
