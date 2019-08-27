@@ -34,7 +34,7 @@ def zigzag_level_order(root)
     else
       levels.push level.reverse
     end
-    height += 1
+    height += 1 # 记录height
   end
 
   levels

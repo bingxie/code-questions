@@ -16,7 +16,7 @@ class LogParser
     @logs.each do |log|
       segments = log.split
       pp segments
-      path = segments[4].gsub(/\d+/, '{user_id}').split('=')[1]
+      path = segments[4].gsub(/\d+/, '{user_id}').split('=')[1]  # use gsub
       connect = get_number(segments[8])
       dyno = segments[7].split('=')[1]
 
@@ -36,9 +36,9 @@ class LogParser
 
   def calculate_max_dyno(data_array)
     # max_dyno_hash = Hash.new(0)
-    data_array.each_with_object(Hash.new(0)) do |data, hash|
+    data_array.each_with_object(Hash.new(0)) do |data, hash|  # Learn to use: each_with_object
       hash[data[:dyno]] += 1
-    end.max[0]
+    end.max.first
 
     # max_dyno_hash.max[0]
   end
@@ -52,7 +52,7 @@ class LogParser
   private
 
   def get_number(str)
-    str.gsub(/\D/, '').to_i
+    str.gsub(/\D/, '').to_i  # use gsub
   end
 end
 

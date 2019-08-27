@@ -21,7 +21,7 @@ def build_paths(node, path, paths)
 
   path += node.val.to_s
 
-  if node.left.nil? && node.right.nil?
+  if node.left.nil? && node.right.nil?  # Leaf node
     paths << path
   else
     path += '->'
@@ -44,7 +44,7 @@ def binary_tree_paths2(root)  #DFS stack Iteration
     node, path = stack.pop
     path += node.val
 
-    if node.left.nil? && node.right.nil?
+    if node.left.nil? && node.right.nil? # Leaf node
       paths << path
     else
       stack.push([node.left, path + '->']) if node.left
@@ -67,6 +67,6 @@ node2.left = node4
 node2.right = node5
 node3.left = node6
 
-# puts binary_tree_paths(node1)
+puts binary_tree_paths(node1)
 
 puts binary_tree_paths2(node1)

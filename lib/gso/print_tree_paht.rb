@@ -13,6 +13,7 @@ def find_paths(root, path, paths, left, right)
   if root
     mid = (left + right) / 2
     copy_path.push " " * mid + root.val
+
     if root.left.nil? && root.right.nil? # leaf node
       paths.push copy_path
     else
@@ -20,6 +21,12 @@ def find_paths(root, path, paths, left, right)
       find_paths(root.right, copy_path, paths, mid + 1, right)
     end
   end
+end
+
+def max_depth2(root)
+  return 0 if root.nil?
+
+  [max_depth2(root.left), max_depth2(root.right)].max + 1
 end
 
 node1 = TreeNode.new('A')
@@ -37,6 +44,8 @@ node3.left = node6
 
 paths = []
 
-find_paths(node1, [], paths, 0, 6)
+height = max_depth2(node1)
+find_paths(node1, [], paths, 0, 2**height - 1)
 
 puts paths
+

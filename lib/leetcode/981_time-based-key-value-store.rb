@@ -13,6 +13,7 @@ class TimeMap
     return '' if @map[key].nil?
 
     inner_array = @map[key]
+
     left = 0
     right = inner_array.length - 1
 
@@ -32,10 +33,22 @@ end
 
 kv = TimeMap.new
 
-kv.set('foo', 'bar', 1)
-p kv.map
-p kv.get('foo', 1)
-p kv.get('foo', 3)
+# kv.set('foo', 'bar', 1)
+# p kv.map
+# p kv.get('foo', 1)
+# p kv.get('foo', 3)
 
-kv.set('foo', 'bar2', 4)
-p kv.get('foo', 5)
+# kv.set('foo', 'bar2', 4)
+# p kv.map
+# p kv.get('foo', 5)
+
+kv.set('love', 'high', 10)
+kv.set('love', 'low', 20)
+kv.set('love', 'abc', 30)
+
+p kv.map
+p kv.get('love', 5)
+p kv.get('love', 10)  # high
+p kv.get('love', 15)  # high
+p kv.get('love', 20)  # low
+p kv.get('love', 25)  # low

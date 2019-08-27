@@ -21,6 +21,12 @@ def max_depth(root) # Recursion
   [left_height, right_height].max + 1 # 没进入一层都要加1
 end
 
+def max_depth2(root)
+  return 0 if root.nil?
+
+  [max_depth2(root.left), max_depth2(root.right)].max + 1
+end
+
 def print_tree(root)
   return [''] if root.nil?
 
@@ -34,13 +40,13 @@ def print_tree(root)
   queue.push [root, 0, 0, width - 1]
 
   until queue.empty?
-    node, i, left, right = queue.pop
-    j = left + (right - left) / 2
+    node, row, left, right = queue.pop
+    col = left + (right - left) / 2
 
-    result[i][j] = node.val.to_s
+    result[row][col] = node.val.to_s
 
-    queue.push([node.left, i + 1, left, j - 1]) if node.left
-    queue.push([node.right, i + 1, j + 1, right]) if node.right
+    queue.push([node.left, row + 1, left, col - 1]) if node.left
+    queue.push([node.right, row + 1, col + 1, right]) if node.right
   end
 
   result
