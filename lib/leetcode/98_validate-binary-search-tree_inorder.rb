@@ -1,35 +1,34 @@
+# Tags: BST Binary Search Tree, In-Order
 # Definition for a binary tree node.
 class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left, @right = nil, nil
-    end
+  attr_accessor :val, :left, :right
+  def initialize(val)
+    @val = val
+    @left = nil
+    @right = nil
+  end
 end
 
 # @param {TreeNode} root
 # @return {Boolean}
 def is_valid_bst(root)
-  results = in_order(root)
-  results.each_with_index do |value, index|
-    return false if results[index + 1] && value > results[index + 1]
+  inorder_nodes = in_order(root)
+  inorder_nodes.each_with_index do |value, index|
+    return false if inorder_nodes[index + 1] && value > inorder_nodes[index + 1]
   end
-  return true
+  true
 end
 
 def in_order(node, result = [])
   return [] if node.nil?
 
-  if node.left
-    in_order(node.left, result)
-  end
+  in_order(node.left, result) if node.left
+
   result << node.val
 
-  if node.right
-    in_order(node.right, result)
-  end
+  in_order(node.right, result) if node.right
 
-  return result
+  result
 end
 
 root = TreeNode.new(2)

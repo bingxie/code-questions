@@ -1,10 +1,11 @@
 # Definition for a binary tree node.
 class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left, @right = nil, nil
-    end
+  attr_accessor :val, :left, :right
+  def initialize(val)
+    @val = val
+    @left = nil
+    @right = nil
+  end
 end
 
 # @param {TreeNode} root
@@ -22,7 +23,7 @@ def is_valid_bst(root)
     node_and_bounds_stack.push [node.right, node.val, upper_bound] if node.right
   end
 
-  return true
+  true
 end
 
 root = TreeNode.new(2)
