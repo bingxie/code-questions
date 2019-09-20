@@ -31,6 +31,7 @@ def merge(ranges)
   # ranges.sort!
 
   results = []
+
   latest_start, latest_end = ranges.first
   results.push [latest_start, latest_end]
 
@@ -55,3 +56,7 @@ p add_bold_tag(s, dict) == '<b>abc</b>xyz<b>123</b>'
 s = 'aaabbcc'
 dict = %w[bc aab aaa]
 p add_bold_tag(s, dict) == '<b>aaabbc</b>c'
+
+s = 'aaaabbcc'
+dict = %w[aa]
+p add_bold_tag(s, dict)

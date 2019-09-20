@@ -1,3 +1,5 @@
+# Tags: Matrix, BFS
+
 Node = Struct.new(:x, :y, :val)
 
 # Time complexity: O(numRows * numColumns), the worst case to try every node.

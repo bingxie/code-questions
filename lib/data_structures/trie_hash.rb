@@ -16,6 +16,9 @@ class WordDictionary
     current = root
     word.each_char do |char|
       current = (current[char] ||= TrieNode.new)
+
+      # current[char] = TrieNode.new if current[char].nil?
+      # current = current[char]
     end
     current.is_end = true
   end

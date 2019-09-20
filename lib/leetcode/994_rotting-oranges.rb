@@ -1,3 +1,5 @@
+# Tags: Matrix, Graph, BFS
+
 Node = Struct.new(:x, :y, :val, :depth)
 
 # @param {Integer[][]} grid

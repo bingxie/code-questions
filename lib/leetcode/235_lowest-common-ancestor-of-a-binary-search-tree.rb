@@ -10,7 +10,7 @@ def lowest_common_ancestor(root, p, q) # Iterative Approach
   while node
     parent_val = node.val
 
-    if p.val > parent_val && q.val > parent_val
+    if p.val > parent_val && q.val > parent_val   # 根据BST的特性，可以选择左子树或者右子树
       node = node.right
     elsif p.val < parent_val && q.val < parent_val
       node = node.left

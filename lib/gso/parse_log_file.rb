@@ -13,25 +13,22 @@ class LogParser
 
   def parse(log)
     @logs = log.split("\n")
+
     @logs.each do |log|
       segments = log.split
-      pp segments
+      # pp segments
       path = segments[4].gsub(/\d+/, '{user_id}').split('=')[1]  # use gsub
       connect = get_number(segments[8])
-      dyno = segments[7].split('=')[1]
+      service = get_number(segments[9])
+      # dyno = segments[7].split('=')[1]
 
-      new_log_data = {
-        connect: connect,
-        dyno: dyno
-      }
-
-      @logs_hash[path] << new_log_data
+      response_time = connect + service
+      @logs_hash[path] << response_time
     end
   end
 
-  def calculate_avg_connect_time(data_array)
-    total = data_array.reduce(0) { |s, data| s += data[:connect]}
-    total / data_array.size
+  def cal_mean_time(response_times)
+    response_times.sum.to_f / response_times.size
   end
 
   def calculate_max_dyno(data_array)
@@ -43,9 +40,29 @@ class LogParser
     # max_dyno_hash.max[0]
   end
 
+  def cal_median_time(response_times)
+    sorted_times = response_times.sort
+    size = response_times.size
+    middle = size / 2
+
+    if size.even?
+      return (sorted_times[middle - 1] + sorted_times[middle]) / 2.to_f
+    else
+      return sorted_times[middle]
+    end
+  end
+
+  def cal_mode_time(response_times)
+    time_count = response_times.each_with_object(Hash.new(0)) do |time, hash|
+      hash[time] += 1
+    end
+
+    time_count.max_by { |_k, v| v }.first
+  end
+
   def output
-    @logs_hash.each do |path, data|
-      puts "#{path} requested #{data.size}, avg-connect: #{calculate_avg_connect_time(data)}, max-dyno: #{calculate_max_dyno(data)}"
+    @logs_hash.each do |path, response_times|
+      puts "#{path} requested #{response_times.size}, avg-connect: #{cal_mean_time(response_times)}, median_time: #{cal_median_time(response_times)} mode_time: #{cal_mode_time(response_times)}"
     end
   end
 

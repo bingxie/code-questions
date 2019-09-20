@@ -11,6 +11,7 @@ def spellchecker(wordlist, queries)
   wordlist.each do |word|
     downcase_word = word.downcase
     words_cap[downcase_word] = word unless words_cap.key?(downcase_word)
+
     vow_encoded_word = encode_vow(downcase_word)
     words_vow[vow_encoded_word] = word unless words_vow.key?(vow_encoded_word)
   end

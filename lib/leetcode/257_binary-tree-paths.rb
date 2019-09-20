@@ -1,17 +1,18 @@
 # Definition for a binary tree node.
 class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left, @right = nil, nil
-    end
+  attr_accessor :val, :left, :right
+  def initialize(val)
+    @val = val
+    @left = nil
+    @right = nil
+  end
 end
 
 # @param {TreeNode} root
 # @return {String[]}
-def binary_tree_paths(root)  #DFS recursion
+def binary_tree_paths(root) # DFS recursion
   paths = []
-  build_paths(root, "", paths)
+  build_paths(root, '', paths)
 
   paths
 end
@@ -21,7 +22,7 @@ def build_paths(node, path, paths)
 
   path += node.val.to_s
 
-  if node.left.nil? && node.right.nil?  # Leaf node
+  if node.left.nil? && node.right.nil? # Leaf node
     paths << path
   else
     path += '->'
@@ -32,13 +33,13 @@ end
 
 # @param {TreeNode} root
 # @return {String[]}
-def binary_tree_paths2(root)  #DFS stack Iteration
+def binary_tree_paths2(root) # DFS stack Iteration
   paths = []
 
   return paths if root.nil?
 
   stack = []
-  stack.push([root, ""])
+  stack.push([root, ''])
 
   until stack.empty?
     node, path = stack.pop

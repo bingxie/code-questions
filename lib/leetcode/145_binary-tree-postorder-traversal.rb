@@ -1,11 +1,4 @@
-# Definition for a binary tree node.
-class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left, @right = nil, nil
-    end
-end
+require_relative '../data_structures/binary_trees/binary_tree_builder'
 
 # @param {TreeNode} root
 # @return {Integer[]}
@@ -16,7 +9,7 @@ def postorder_traversal(root)
   results = []
   until stack.empty?
     node = stack.pop
-    results.unshift(node.val)   # 从头上放
+    results.unshift(node.val) if node.val # 从头上放
 
     stack.push node.left if node.left
     stack.push node.right if node.right
@@ -24,10 +17,7 @@ def postorder_traversal(root)
   results
 end
 
-root = TreeNode.new(1)
-node1 = TreeNode.new(2)
-node2 = TreeNode.new(3)
-root.right = node1
-node1.left = node2
+root = BinaryTreeBuilder.build([1,nil,2,nil, nil,3])
+p root
 
 p postorder_traversal(root) # [3,2,1]

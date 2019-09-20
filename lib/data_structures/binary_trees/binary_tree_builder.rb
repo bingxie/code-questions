@@ -17,6 +17,48 @@ class BinaryTreeBuilder
     root
   end
 
+  def self.print_tree(root)
+    return [''] if root.nil?
+
+    depth = max_depth(root)
+
+    width = 2**depth - 1
+
+    result = Array.new(depth) { Array.new(width) { '' } }
+
+    queue = Queue.new
+    queue.push [root, 0, 0, width - 1]
+
+    until queue.empty?
+      node, row, left, right = queue.pop
+      col = left + (right - left) / 2
+
+      result[row][col] = node.val.to_s
+
+      queue.push([node.left, row + 1, left, col - 1]) if node.left
+      queue.push([node.right, row + 1, col + 1, right]) if node.right
+    end
+
+    result.each do |line|
+      puts line.join('-')
+    end
+  end
+
+  def self.postorder_traversal(root)
+    return [] if root.nil?
+
+    stack = [root]
+    results = []
+    until stack.empty?
+      node = stack.pop
+      results.unshift(node.val) if node.val # 从头上放
+
+      stack.push node.left if node.left
+      stack.push node.right if node.right
+    end
+    results
+  end
+
   private
 
   def self.subtree(index, root, size, values)
@@ -34,6 +76,15 @@ class BinaryTreeBuilder
       root.right = TreeNode.new(values[right_node_index])
       subtree(right_node_index, root.right, size, values)
     end
+  end
+
+  def self.max_depth(root) # Recursion
+    return 0 if root.nil?
+
+    left_height = max_depth(root.left)
+    right_height = max_depth(root.right)
+
+    [left_height, right_height].max + 1 # 没进入一层都要加1
   end
 end
 

@@ -1,3 +1,4 @@
+# Tags: BFS, DFS, Graph, Matrix
 # @param {Character[][]} grid
 # @return {Integer}
 def num_islands(grid) # DFS
