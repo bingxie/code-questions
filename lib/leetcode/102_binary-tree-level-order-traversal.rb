@@ -17,7 +17,7 @@ def level_order(root)
   queue = Queue.new
   queue.push(root)
 
-  until queue.empty?
+  until queue.empty?  # BFS
     level = []
     length = queue.length
 
@@ -34,4 +34,3 @@ def level_order(root)
 
   levels
 end
-

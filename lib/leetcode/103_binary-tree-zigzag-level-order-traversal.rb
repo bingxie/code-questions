@@ -18,7 +18,7 @@ def zigzag_level_order(root)
   queue.push(root)
   height = 1
 
-  until queue.empty?
+  until queue.empty?  # BFS
     level = []
     length = queue.length
 
@@ -29,6 +29,7 @@ def zigzag_level_order(root)
       queue.push node.left if node.left
       queue.push node.right if node.right
     end
+
     if height % 2 == 1
       levels.push level
     else

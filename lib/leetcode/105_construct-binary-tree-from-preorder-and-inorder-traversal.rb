@@ -28,27 +28,29 @@ def build_tree(preorder, inorder)
   node
 end
 
-def inorder_traversal2(root, result = [])
-  return if root.nil?
+def inorder_traversal_r(root, result = [])
+  return result if root.nil?
 
-  inorder_traversal2(root.left, result) if root.left
+  inorder_traversal_r(root.left, result) if root.left
+
   result.push root.val
-  inorder_traversal2(root.right, result) if root.right
+
+  inorder_traversal_r(root.right, result) if root.right
 
   result
 end
 
-def preorder_traversal2(root, result = [])
+def preorder_traversal_r(root, result = [])
   return if root.nil?
 
   result.push root.val
-  preorder_traversal2(root.left, result) if root.left
-  preorder_traversal2(root.right, result) if root.right
+  preorder_traversal_r(root.left, result) if root.left
+  preorder_traversal_r(root.right, result) if root.right
 
   result
 end
 
-def inorder_traversal(root)
+def inorder_traversal_i(root)
   result = []
   stack = []
 
@@ -74,8 +76,6 @@ inorder = [9, 3, 15, 20, 7]
 
 new_tree = build_tree(preorder, inorder)
 
-p preorder_traversal2(new_tree)
-p inorder_traversal2(new_tree)
-p inorder_traversal(new_tree)
-
-
+p preorder_traversal_r(new_tree)
+p inorder_traversal_r(new_tree)
+p inorder_traversal_i(new_tree)

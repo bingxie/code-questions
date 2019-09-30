@@ -1,4 +1,4 @@
-# Topic: Binary Search Tree
+# Tags: Binary Search Tree, BST, recursion
 # Definition for a binary tree node.
 class TreeNode
   attr_accessor :val, :left, :right

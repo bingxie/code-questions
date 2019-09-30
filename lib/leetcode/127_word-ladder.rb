@@ -5,23 +5,24 @@ def ladder_length(begin_word, end_word, word_list)
 
   queue = [[begin_word, 1]]
 
-  while !queue.empty? do
-      pointer, level = queue.shift
+  until queue.empty?
+    pointer, level = queue.shift
 
-      return level if pointer == end_word
+    return level if pointer == end_word
 
-      pointer.size.times do |i|
-          left = pointer[0...i]
-          right = pointer[(i + 1)...pointer.size]
-          for c in "a".."z" do
-              next if c == pointer[i]
-              temp = left + c + right
-              if word_set.include?(temp) then
-                  word_set.delete(temp)
-                  queue << [temp, level + 1]
-              end
-          end
+    pointer.size.times do |i|
+      left = pointer[0...i]
+      right = pointer[(i + 1)...pointer.size]
+      ('a'..'z').each do |c|
+        next if c == pointer[i]
+
+        temp = left + c + right
+        if word_set.include?(temp)
+          word_set.delete(temp)
+          queue << [temp, level + 1]
+        end
       end
+    end
   end
   0
 end

@@ -9,7 +9,7 @@
 
 # @param {TreeNode} root
 # @return {Integer[][]}
-def level_order_bottom(root)
+def level_order_bottom(root)  # BST
   return [] if root.nil?
 
   levels = []

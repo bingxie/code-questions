@@ -32,6 +32,7 @@ def merge_sort(array_to_sort)   # recursion
     end
   end
 
+  p "sorted_array: #{sorted_array}"
   sorted_array
 end
 

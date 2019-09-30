@@ -11,7 +11,7 @@ class Person
     @friends << friend
   end
 
-  def display_network
+  def display_network  # BSF
     to_reset = [self]
 
     queue = [self]

@@ -1,3 +1,4 @@
+# Tags: BST iteration
 # Definition for a binary tree node.
 class TreeNode
   attr_accessor :val, :left, :right
@@ -32,7 +33,5 @@ node2 = TreeNode.new(3)
 
 root.left = node1
 root.right = node2
-
-results = []
 
 p is_valid_bst(root)

@@ -12,6 +12,26 @@ def reverse!(string)
   end
 end
 
+def reverse_string_in_place(string)
+  return string if string&.size < 2
+
+  head = 0
+  tail = string.size - 1
+
+  while head < tail
+    string[head], string[tail] = string[tail], string[head]
+
+    head += 1
+    tail -= 1
+  end
+
+  string
+end
+
+p reverse_string_in_place('a')
+p reverse_string_in_place('ab')
+p reverse_string_in_place('abc')
+
 def run_tests
   desc = 'empty string'
   string = ''
