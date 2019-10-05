@@ -72,6 +72,7 @@ class LRUCache
 
     if node.nil?
       node = Node.new(key, value)
+
       @cache[key] = node
       @list.add_node(node)
     else

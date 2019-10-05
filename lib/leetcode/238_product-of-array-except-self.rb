@@ -15,6 +15,8 @@ def product_except_self(nums)
     product_so_far *= nums[i]
   end
 
+  p results
+
   product_so_far = 1
 
   last_index.downto(0).each do |i|

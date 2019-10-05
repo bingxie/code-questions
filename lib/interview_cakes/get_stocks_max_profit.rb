@@ -5,8 +5,8 @@ def get_max_profit(stock_prices)
   raise ArgumentError, 'requires as least two prices' if stock_prices.length < 2
 
   min_price = stock_prices[0]
-  first_profit = stock_prices[1] - stock_prices[0]
-  max_profit = first_profit > 0 ? first_profit : 0
+  #first_profit = stock_prices[1] - stock_prices[0]
+  max_profit = 0 #first_profit > 0 ? first_profit : 0
 
   stock_prices[1..stock_prices.length-1].each do |current_price|
     potential_profit = current_price - min_price
