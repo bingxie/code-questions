@@ -67,12 +67,12 @@ class BinaryTreeBuilder
     left_node_index = index * 2 + 1
     right_node_index = index * 2 + 2
 
-    if left_node_index < size
+    if left_node_index < size && values[left_node_index]
       root.left = TreeNode.new(values[left_node_index])
       subtree(left_node_index, root.left, size, values)
     end
 
-    if right_node_index < size
+    if right_node_index < size && values[right_node_index]
       root.right = TreeNode.new(values[right_node_index])
       subtree(right_node_index, root.right, size, values)
     end

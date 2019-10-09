@@ -15,7 +15,7 @@ def is_valid(s)
       return false if stack.empty?
 
       prev = stack.pop
-      return false if pairs[prev] != c
+      return false if pairs[prev] != c  #check equal
     end
   end
 

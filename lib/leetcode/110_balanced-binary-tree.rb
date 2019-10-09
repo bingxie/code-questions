@@ -26,7 +26,42 @@ def max_depth(node)  # Recursion
 
   [left_depth, right_depth].max + 1
 end
+###############################
+# Approach 2: Iteration  (Stack)
 
+def is_balanced2(root)
+  return true if root.nil?
+
+  depths = []
+  nodes = []
+  nodes.push [root, 0]
+
+  until nodes.empty?
+    p nodes
+
+    node, depth = nodes.pop
+
+    if node.left.nil? && node.right.nil? # leaf node
+      unless depths.include?(depth)
+        depths.push depth
+        p depths
+        if depths.size > 2 || (depths.size == 2 && (depths[0] - depths[1]).abs > 1)
+          return false
+        end
+      end
+    else
+      nodes.push [node.left, depth + 1] if node.left
+      nodes.push [node.right, depth + 1] if node.right
+    end
+  end
+
+  return false if depths.size == 1 && depths.first > 1
+
+  true
+end
+
+
+############################
 node1 = TreeNode.new(3)
 node2 = TreeNode.new(9)
 node3 = TreeNode.new(20)
@@ -39,6 +74,7 @@ node3.left = node4
 node3.right = node5
 
 p is_balanced(node1)  # true
+p is_balanced2(node1)  # true
 
 node6 = TreeNode.new(1)
 node7 = TreeNode.new(2)
@@ -47,3 +83,4 @@ node6.right = node7
 node7.right = node8
 
 p is_balanced(node6)  #false
+p is_balanced2(node6)  #false
