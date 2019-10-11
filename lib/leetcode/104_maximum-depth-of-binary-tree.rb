@@ -72,11 +72,3 @@ def max_depth3(node)
 end
 
 p max_depth3(node1)
-
-def longest_path(root)
-  return 0 if root.nil?
-
-  max_depth3(root.left) + max_depth3(root.right) + 1
-end
-
-p longest_path(node1)
