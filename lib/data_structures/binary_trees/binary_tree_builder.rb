@@ -99,3 +99,6 @@ end
 
 # pp root.left.right.left.val
 # pp root.left.right.right.val
+
+root = BinaryTreeBuilder.build([0,8,1,nil,nil,3,2,nil,4,5,nil,nil,7,6])
+BinaryTreeBuilder.print_tree root
