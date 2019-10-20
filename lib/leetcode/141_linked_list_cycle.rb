@@ -19,6 +19,7 @@ def cycle_list?(head)
     visited_nodes.add(head)
     head = head.next
   end
+
   false
 end
 

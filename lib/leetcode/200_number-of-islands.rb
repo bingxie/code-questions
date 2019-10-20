@@ -20,7 +20,7 @@ end
 def dfs(i, j, grid)
   return if i < 0 || j < 0 || i >= grid.size || j >= grid.first.size || grid[i][j] == '0'
 
-  grid[i][j] = '0'
+  grid[i][j] = '0'  # visited mark to 0
 
   dfs(i - 1, j, grid)
   dfs(i, j - 1, grid)
@@ -29,7 +29,10 @@ def dfs(i, j, grid)
 end
 
 grid = [%w[1 1 1 1 0], %w[1 1 0 1 0], %w[1 1 0 0 0], %w[0 0 0 0 0]]
+pp grid
 p num_islands(grid)
+
+##########################################
 
 def num_islands2(grid)   # BFS
   return 0 if grid.empty?
@@ -49,6 +52,7 @@ end
 
 def bfs(i, j, grid)
   grid[i][j] = '0'
+
   directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
 
   queue = Queue.new

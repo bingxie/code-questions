@@ -27,8 +27,9 @@ end
 
 def reverse_list2(head)
   return head if head.nil? || head.next.nil?
-
+  # p head.next.val
   rl = reverse_list2(head.next)
+
   puts head.val
   head.next.next = head
   head.next = nil
@@ -56,10 +57,10 @@ node3.next = node4
 
 p list_values(head)
 
-result = reverse_list(head)
+# result = reverse_list(head)
 
-p list_values(result)
+# p list_values(result)
 
-result = reverse_list2(result)
+result = reverse_list2(head)
 
 p list_values(result)
