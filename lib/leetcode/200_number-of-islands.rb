@@ -56,7 +56,7 @@ def bfs(i, j, grid)
   directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
 
   queue = Queue.new
-  queue.push([i, j])
+  queue.push([i, j])  # 也可以用两个queue，比如： row_queue, col_queue
 
   until queue.empty?
     r, c = queue.pop

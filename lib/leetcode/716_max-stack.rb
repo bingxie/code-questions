@@ -25,6 +25,7 @@ class MaxStack
 
   def pop_max
     max = peek_max
+
     buffer = []
     buffer.push(pop) while top != max
 

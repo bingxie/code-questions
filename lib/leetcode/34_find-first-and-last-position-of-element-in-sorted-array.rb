@@ -1,3 +1,5 @@
+# Binary Search
+
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer[]}
@@ -48,3 +50,43 @@ target = 8
 p search_range(nums, target) # [3, 4]
 
 p search_range(nums, 6) # [-1, -1]
+
+
+def search_range2(nums, target)
+  return [-1, -1] if nums.nil? || nums.size == 0
+
+  first = find_index(nums, target, true)
+  return [-1, -1] if nums[first] != target
+
+  last = find_index(nums, target, false) - 1
+
+  [first, last]
+end
+
+def find_index(nums, target, left)
+  low = 0
+  high = nums.size
+
+  while low < high
+    mid = low + (high - low) / 2
+    p "#{low} #{high} #{mid}"
+
+    if (nums[mid] > target || (left && target == nums[mid]))
+      high = mid
+    else
+      low = mid + 1
+    end
+  end
+
+  low
+end
+
+nums = [5,7,7,8,8,10]
+target = 8
+
+p search_range2(nums, 8)
+
+nums = [1]
+target = 1
+
+p search_range2(nums, target) # [0, 0]
