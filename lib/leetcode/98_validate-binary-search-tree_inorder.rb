@@ -13,9 +13,11 @@ end
 # @return {Boolean}
 def is_valid_bst(root)
   inorder_nodes = in_order(root)
+
   inorder_nodes.each_with_index do |value, index|
     return false if inorder_nodes[index + 1] && value > inorder_nodes[index + 1]
   end
+
   true
 end
 

@@ -12,6 +12,8 @@ end
 # @param {TreeNode} root
 # @return {Boolean}
 def is_valid_bst(root)
+  return true if root.nil?
+
   node_and_bounds_stack = []
   node_and_bounds_stack.push [root, -Float::INFINITY, Float::INFINITY]
 

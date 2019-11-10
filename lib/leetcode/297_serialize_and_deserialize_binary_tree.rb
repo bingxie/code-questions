@@ -8,7 +8,8 @@ def serialize(root)
 
   # 进行一个Pre-order的深度遍历
   stack = [root]
-  while !stack.empty?
+
+  until stack.empty?
     current_node = stack.pop
 
     if current_node.nil?
@@ -21,6 +22,22 @@ def serialize(root)
     end
   end
   result
+end
+# "1,2,3,None,None,4,None,None,5,None,None,"
+
+def serialize2(root, results = [])
+  if root.nil?
+    results.push('None')
+    return
+  end
+
+  results.push(root.value)
+  p "root value: #{results}"
+
+  serialize2(root.left_child, results)
+  serialize2(root.right_child, results)
+
+  results.join(',')
 end
 
 # Decodes your encoded data to tree.
@@ -57,7 +74,8 @@ node2 = TreeNode.new(2, left: node3, right: node4)
 node1 = TreeNode.new(1, left: node2, right: node5)
 
 p serialize(node1) == "1,2,3,None,None,4,None,None,5,None,None,"
-p serialize(nil) == "None,"
+p serialize2(node1)
+# p serialize(nil) == "None,"
 
-tree_string = "1,2,3,None,None,4,None,None,5,None,None,"
-p deserialize(tree_string)
+# tree_string = "1,2,3,None,None,4,None,None,5,None,None,"
+# p deserialize(tree_string)
