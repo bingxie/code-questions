@@ -13,3 +13,15 @@ class UnionFind
     @leaders.map! {|i| (i == leader_1) ? leader_2 : i }
   end
 end
+
+uf = UnionFind.new(5)
+p uf.leaders
+
+uf.union(2,3)
+p uf.leaders
+
+uf.union(4,5)
+p uf.leaders
+
+uf.union(2,5)
+p uf.leaders

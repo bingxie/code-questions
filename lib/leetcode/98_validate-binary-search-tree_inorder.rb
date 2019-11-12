@@ -33,6 +33,34 @@ def in_order(node, result = [])
   result
 end
 
+#########################
+
+def is_valid_bst2(root)  # save result space, use stack, compare during traversal
+  return true if root.nil?
+
+  stack = []
+  previous = nil
+
+  node = root
+
+  while !stack.empty? || node
+    while node
+      stack.push node
+
+      node = node.left
+    end
+
+    node = stack.pop
+
+    return false if previous && node.val <= previous
+    previous = node.val
+
+    node = node.right
+  end
+
+  true
+end
+
 root = TreeNode.new(2)
 node1 = TreeNode.new(1)
 node2 = TreeNode.new(3)
