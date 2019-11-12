@@ -13,13 +13,13 @@ class LFUCache
   # @param {Integer} key
   # @return {Integer}
   def get(key)
-    val = elems.delete key  # 先从 hash 中删除
-    if val
-      increase_freq(key)
-      elems[key] = val   # 然后重新放进去就会在最后
-    else
-      -1
-    end
+    val = @elems[key]
+
+    return -1 if val.nil?
+
+    increase_freq(key)
+
+    val
   end
 
   # @param {Integer} key
@@ -27,27 +27,27 @@ class LFUCache
   # @return {Void}
   def put(key, value)
     return nil if capacity == 0
-    elems.delete key  # 如果已经存在，先从Hash中删除
-    elems[key] = value # 重新放进去，这样继续维持顺序
 
-    if lfu.has_key?(key)
+    @elems[key] = value
+
+    if @lfu.key?(key)
       increase_freq(key)
-    else  # 新增的key，要先处理超过capacity的情况
-      if elems.size > capacity
-        lfu_key = lfu.min_by{ |k, v| v}.first
-        p "lfu_key: #{lfu_key}"
-        elems.delete(lfu_key)
-        lfu.delete(lfu_key)
+    else # 新增的key，要处理超过capacity的情况
+      if @elems.size > capacity
+        lfu_key = @lfu.min_by { |_k, v| v }.first
+
+        @elems.delete(lfu_key)
+        @lfu.delete(lfu_key)
       end
 
-      lfu[key] = 1
+      @lfu[key] = 1
     end
   end
 
   def increase_freq(key)
-    freq = lfu[key]
-    lfu.delete(key)
-    lfu[key] = freq + 1  # 也需要重新插入保持顺序
+    freq = @lfu[key]
+    @lfu.delete(key)
+    @lfu[key] = freq + 1 # 也需要重新插入保持顺序
   end
 end
 
