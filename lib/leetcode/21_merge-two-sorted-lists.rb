@@ -14,7 +14,7 @@ def merge_two_lists(l1, l2)
   prep = dummy_head = ListNode.new(0)
 
   while l1 || l2
-    if !l1.nil? && (l2.nil? || l1.val <= l2.val)
+    if l1 && (l2.nil? || l1.val <= l2.val)
       prep.next = l1
       prep = l1
       l1 = l1.next
@@ -33,7 +33,7 @@ def merge_two_lists_recursion(l1, l2)
     l2
   elsif l2.nil?
     l1
-  elsif l1.val < l2.val
+  elsif l1.val < l2.valG
     l1.next = merge_two_lists_recursion(l1.next, l2)
     l1
   else

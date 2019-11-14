@@ -39,7 +39,7 @@ def num_islands2(grid)   # BFS
 
   count = 0
 
-  0.upto(grid.size - 1) do |i| # grid.size.times
+  0.upto(grid.size - 1) do |i| # (grid.size -1).times
     0.upto(grid.first.size - 1) do |j|
       if grid[i][j] == '1'
         bfs(i, j, grid)
@@ -51,23 +51,23 @@ def num_islands2(grid)   # BFS
 end
 
 def bfs(i, j, grid)
-  grid[i][j] = '0'
-
   directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
 
   queue = Queue.new
   queue.push([i, j])  # 也可以用两个queue，比如： row_queue, col_queue
 
   until queue.empty?
-    r, c = queue.pop
+    row, col = queue.pop
+
+    grid[row][col] = '0'
 
     directions.each do |dr|
-      new_r = r + dr[0]
-      new_c = c + dr[1]
+      new_r = row + dr[0]
+      new_c = col + dr[1]
 
       if new_r >= 0 && new_c >= 0 && new_r < grid.size && new_c < grid.first.size && grid[new_r][new_c] == '1'
         queue.push([new_r, new_c])
-        grid[new_r][new_c] = '0' # mark as visited
+        # grid[new_r][new_c] = '0' # mark as visited
       end
     end
   end
