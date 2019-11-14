@@ -1,9 +1,9 @@
 class ListNode
-    attr_accessor :val, :next
-    def initialize(val)
-        @val = val
-        @next = nil
-    end
+  attr_accessor :val, :next
+  def initialize(val)
+    @val = val
+    @next = nil
+  end
 end
 
 # @param {ListNode} l1
@@ -15,7 +15,8 @@ def add_two_numbers(first, second)
 
   while first || second || modulus.nonzero?
     modulus, quotient = [first&.val, second&.val, modulus].compact.sum.divmod(10)
-    current = ListNode.new(quotient);
+
+    current = ListNode.new(quotient)
     previous.next = current
 
     previous = current
@@ -23,9 +24,8 @@ def add_two_numbers(first, second)
     second = second&.next
   end
 
-  return dummy_head.next
+  dummy_head.next
 end
-
 
 l1 = ListNode.new(2)
 node2 = ListNode.new(4)
