@@ -47,7 +47,7 @@ def find_node(root, target) # O(n)
   find_node(root.left, target) || find_node(root.right, target)
 end
 
-values = [3,5,1,6,2,0,8,nil,nil,7,4]
+values = '3,5,1,6,2,0,8,null,null,7,4'
 root = BinaryTreeBuilder.build(values)
 BinaryTreeBuilder.print_tree(root)
 pp BinaryTreeBuilder.postorder_traversal(root)

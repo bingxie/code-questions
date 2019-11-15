@@ -9,10 +9,37 @@ class TreeNode
 end
 
 class BinaryTreeBuilder
-  def self.build(values)
-    root = TreeNode.new(values.first)
+  # input: "1,2,5,3,null,null,null,null,4,null,null"
+  def self.build(tree_string)
+    arr = tree_string.split(',')
 
-    subtree(0, root, values.size, values)
+    return nil if arr.empty? || arr[0] == 'null'
+
+    root = TreeNode.new(arr.shift.to_i)
+
+    queue = [root]
+
+    until queue.empty? || arr.empty?
+      node = queue.shift
+
+      left_val = arr.shift
+      if left_val == 'null'
+        node.left = nil
+      elsif left_val
+        left_node = TreeNode.new(left_val.to_i)
+        node.left = left_node
+        queue.push left_node
+      end
+
+      right_val = arr.shift
+      if right_val == 'null'
+        node.right = nil
+      elsif right_val
+        right_node = TreeNode.new(right_val.to_i)
+        node.right = right_node
+        queue.push right_node
+      end
+    end
 
     root
   end
@@ -22,7 +49,7 @@ class BinaryTreeBuilder
 
     depth = max_depth(root)
 
-    width = 2**depth - 1
+    width = 2**(depth + 1)
 
     result = Array.new(depth) { Array.new(width) { '' } }
 
@@ -40,7 +67,7 @@ class BinaryTreeBuilder
     end
 
     result.each do |line|
-      puts line.join('-')
+      puts line.join('.')
     end
   end
 
@@ -60,24 +87,6 @@ class BinaryTreeBuilder
   end
 
   private
-
-  def self.subtree(index, root, size, values)
-    # return if index > size
-
-    left_node_index = index * 2 + 1
-    right_node_index = index * 2 + 2
-
-    if left_node_index < size && values[left_node_index]
-      root.left = TreeNode.new(values[left_node_index])
-      subtree(left_node_index, root.left, size, values)
-    end
-
-    if right_node_index < size && values[right_node_index]
-      root.right = TreeNode.new(values[right_node_index])
-      subtree(right_node_index, root.right, size, values)
-    end
-  end
-
   def self.max_depth(root) # Recursion
     return 0 if root.nil?
 
@@ -88,17 +97,12 @@ class BinaryTreeBuilder
   end
 end
 
-# values = [6, 2, 8, 0, 4, 7, 9, nil, nil, 3, 5]
-# root = BinaryTreeBuilder.build(values)
-# pp root
-# pp root.left.val
-# pp root.right.val
-
-# pp root.left.left.val
-# pp root.left.right.val
-
-# pp root.left.right.left.val
-# pp root.left.right.right.val
-
-root = BinaryTreeBuilder.build([0,8,1,nil,nil,3,2,nil,4,5,nil,nil,7,6])
+root = BinaryTreeBuilder.build('1,2,5,3,null,null,null,null,4,null,null')
 BinaryTreeBuilder.print_tree root
+
+# root = BinaryTreeBuilder.build('1,null,2,3')
+# BinaryTreeBuilder.print_tree root
+
+# 5,4,7,3,null,2,null,-1,null,9
+# root = BinaryTreeBuilder.build('5,4,7,3,null,2,null,-1,null,9')
+# BinaryTreeBuilder.print_tree root

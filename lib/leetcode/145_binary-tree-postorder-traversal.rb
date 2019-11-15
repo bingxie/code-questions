@@ -17,7 +17,6 @@ def postorder_traversal(root)
   results
 end
 
-root = BinaryTreeBuilder.build([1,nil,2,nil, nil,3])
-p root
+root = BinaryTreeBuilder.build('1,null,2,3')
 
 p postorder_traversal(root) # [3,2,1]

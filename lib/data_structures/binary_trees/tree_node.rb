@@ -1,9 +1,9 @@
 class TreeNode
-  attr_accessor :value, :left_child, :right_child
+  attr_accessor :val, :left, :right
 
-  def initialize(value, left: nil, right: nil)
-    @value = value
-    @left_child = left
-    @right_child = right
+  def initialize(val, left: nil, right: nil)
+    @val = val
+    @left = left
+    @right = right
   end
 end

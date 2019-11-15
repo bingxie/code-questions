@@ -58,7 +58,7 @@ end
 
 
 #################################
-values = [3,1,5,0,2,4,6]
+values = '3,1,5,0,2,4,6'
 root = BinaryTreeBuilder.build(values)
 
 BinaryTreeBuilder.print_tree(root)

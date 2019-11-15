@@ -32,7 +32,7 @@ def lowest_common_ancestor2(root, p, q) # Recursive Approach
   end
 end
 
-values = [6, 2, 8, 0, 4, 7, 9, nil, nil, 3, 5]
+values = '6,2,8,0,4,7,9,null,null,3,5'
 root = BinaryTreeBuilder.build(values)
 pn = TreeNode.new(2)
 qn = TreeNode.new(8)

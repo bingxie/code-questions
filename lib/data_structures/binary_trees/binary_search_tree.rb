@@ -11,9 +11,9 @@ class BinarySearchTree
     return node if node.value == value
 
     if value > node.value
-      search(value, node.right_child)  # search right sub tree
+      search(value, node.right)  # search right sub tree
     else
-      search(value, node.left_child)   # search left sub tree
+      search(value, node.left)   # search left sub tree
     end
   end
 
@@ -39,16 +39,16 @@ class BinarySearchTree
     return if value == node.value
 
     if value > node.value
-      if node.right_child
-        insert(value, node.right_child)
+      if node.right
+        insert(value, node.right)
       else
-        node.right_child = TreeNode.new(value)
+        node.right = TreeNode.new(value)
       end
     elsif value < node.value
-      if node.left_child
-        insert(value, node.left_child)
+      if node.left
+        insert(value, node.leff)
       else
-        node.left_child = TreeNode.new(value)
+        node.leff = TreeNode.new(value)
       end
     end
   end

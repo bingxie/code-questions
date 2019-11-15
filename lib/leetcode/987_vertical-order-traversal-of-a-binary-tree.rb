@@ -31,7 +31,7 @@ def position(root, position, all_positions)
   position(root.right, [x + 1, y - 1], all_positions) if root.right
 end
 
-root = BinaryTreeBuilder.build([3, 9, 20, nil, nil, 15, 7])
+root = BinaryTreeBuilder.build('3,9,20,null,null,15,7')
 BinaryTreeBuilder.print_tree root
 
 p vertical_traversal(root)

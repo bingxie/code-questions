@@ -28,13 +28,13 @@ def inorder_successor(root, p)
   nil
 end
 
-values = [2,1,3]
+values = '2,1,3'
 root = BinaryTreeBuilder.build(values)
 BinaryTreeBuilder.print_tree(root)
 
 p inorder_successor(root, TreeNode.new(1))
 
-values = [5,3,6,2,4,nil,nil,1]
+values = '5,3,6,2,4,null,null,1'
 root = BinaryTreeBuilder.build(values)
 BinaryTreeBuilder.print_tree(root)
 p inorder_successor(root, TreeNode.new(6))
