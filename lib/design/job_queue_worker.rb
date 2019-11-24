@@ -9,23 +9,36 @@ class Worker
   def start
     @working = true
 
-    @thread = Thread.new do
-      while @working
-        while !@queue.empty?
-          Thread.new do
-            job = @queue.pop
-            job.perform
-          end
+    @num_threads.times do
+      @threads << Thread.new do
+        while @working && !@queue.closed?
+          puts "#{@queue.num_waiting} threads are waiting"
+          job = @queue.pop(false)
+          job.perform
         end
-        puts "waiting"
-        sleep(2)
       end
     end
+
+    # @thread = Thread.new do
+    #   while @working
+    #     while !@queue.empty?
+    #       Thread.new do
+    #         job = @queue.pop
+    #         job.perform
+    #       end
+    #     end
+    #     puts "waiting"
+    #     sleep(2)
+    #   end
+    # end
   end
 
   def stop
     @working = false
-    @thread.exit
+    @threads.each(&:exit)
+    @threads.clear
+
+    true
   end
 end
 
@@ -72,13 +85,13 @@ class App
   queue.enqueue(email_job)
   queue.enqueue(sms_job)
 
-  worker = Worker.new(2, queue)
+  worker = Worker.new(8, queue)  # try 1, 2, 3, 8 threads to see the differeces
 
   worker.start
 
   queue.enqueue(sms_job)
 
-  sleep(10)
+  sleep(5)
 
   worker.stop
   queue.close
