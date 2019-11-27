@@ -35,15 +35,13 @@ p length_of_longest_substring(str) # 3
 # Approach 2: Sliding Window
 require 'set'
 def length_of_longest_substring2(str)
-  length = str.length
-
   set = Set.new
 
   result = 0
   i = 0
   j = 0
 
-  while i < length && j < length
+  while j < str.length
     if set.include? str[j]
       set.delete str[i]
       i += 1

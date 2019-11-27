@@ -16,10 +16,10 @@ def add_two_numbers(first, second)
   while first || second || modulus.nonzero?
     modulus, quotient = [first&.val, second&.val, modulus].compact.sum.divmod(10)
 
-    current = ListNode.new(quotient)
-    previous.next = current
+    new_node = ListNode.new(quotient)
+    previous.next = new_node
+    previous = new_node
 
-    previous = current
     first = first&.next
     second = second&.next
   end
