@@ -85,7 +85,7 @@ class App
   queue.enqueue(email_job)
   queue.enqueue(sms_job)
 
-  worker = Worker.new(8, queue)  # try 1, 2, 3, 8 threads to see the differeces
+  worker = Worker.new(2, queue)  # try 1, 2, 3, 8 threads to see the differeces
 
   worker.start
 

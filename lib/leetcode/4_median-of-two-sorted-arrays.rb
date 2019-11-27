@@ -1,3 +1,5 @@
+# Tags： Binary Search, Array
+
 # @param {Integer[]} nums1
 # @param {Integer[]} nums2
 # @return {Float}

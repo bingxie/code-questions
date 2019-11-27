@@ -14,7 +14,21 @@ def subsets(nums, i = 0)
   end
 end
 
-#pp subsets([1,2,3,4,5,6])
+def subsets4(nums)
+  find_subsets(nums, 0, [])
+end
+
+def find_subsets(nums, start, pre_result)
+  result = [pre_result]
+
+  (start...nums.size).each do |index|
+    result += find_subsets(nums, index + 1, pre_result + [nums[index]])
+  end
+
+  result
+end
+
+pp subsets4([1,2,3])
 
 # Iterative  O(2pow(n))  (1+2+4+8+16....)
 def subsets2(nums, n = 0)
@@ -37,4 +51,16 @@ def subsets2(nums, n = 0)
   result
 end
 
-pp subsets2([1,2,3,4,5])
+#pp subsets2([1,2,3,4,5])
+
+def subsets3(nums)
+  results = [[]]
+
+  nums.each do |num|
+    puts "each loop: results #{results}"
+    results += results.map { |result| result + [num]}
+  end
+  results
+end
+
+# p subsets3([1,2,3])
