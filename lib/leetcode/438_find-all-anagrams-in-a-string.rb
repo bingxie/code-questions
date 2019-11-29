@@ -16,7 +16,7 @@ def find_anagrams(s, p)
   s.chars.each_with_index do |char, j|
     s_hash[char] += 1
 
-    if j > p.size - 1
+    if j + 1 > p.size
       s_hash[prev_i] -= 1
       s_hash.delete(prev_i) if s_hash[prev_i] == 0
     end
@@ -54,8 +54,10 @@ def find_anagrams2(s, p)
     p_array[char.ord - 'a'.ord] += 1
   end
 
+
   s.chars.each_with_index do |char, index|
-    s_array[s[index - p_size].ord - 'a'.ord] -= 1 if index >= p_size
+    # p "index: #{index}  p_size: #{p_size}"
+    s_array[s[index - p_size].ord - 'a'.ord] -= 1 if index >= p_size  # reset the previous one
 
     s_array[char.ord - 'a'.ord] += 1
 

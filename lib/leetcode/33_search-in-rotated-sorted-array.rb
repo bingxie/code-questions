@@ -80,3 +80,66 @@ p search_in_rotated_sorted_array2(nums, 1)  # 1
 p search_in_rotated_sorted_array2([5,1,2,3,4], 1) # 1
 
 p search_in_rotated_sorted_array2([1], 1)  # 0
+
+# -----------
+def search_in_rotated_sorted_array3(nums, target)
+  return -1 if nums.empty?
+
+  position = find_min_position(nums)
+  p "position: #{position}"
+
+  result = binary_search(nums[0..position - 1], target)
+  return result if result
+
+  result = binary_search(nums[position..-1], target)
+  return -1 if result.nil?
+
+  position + result # 注意结果要加上偏移量
+end
+
+def binary_search(nums, target)
+  p "input nums: #{nums}"
+  return nil if nums.empty?
+
+  low = 0
+  high = nums.size - 1
+
+  while low <= high
+    mid = low + (high - low) / 2
+    return mid if nums[mid] == target
+
+    if nums[mid] > target
+      high = mid - 1
+    else
+      low = mid + 1
+    end
+  end
+end
+
+def find_min_position(nums)
+  return nil if nums.empty?
+
+  low = 0
+  high = nums.size - 1
+
+  return low if nums[high] >= nums[low]
+
+  while low <= high
+    mid = low + (high - low) / 2
+
+    return mid + 1 if nums[mid] > nums[mid + 1]
+    return mid if nums[mid] < nums[mid - 1]
+
+    if nums[mid] > nums[low]
+      low = mid + 1
+    else
+      high = mid - 1
+    end
+  end
+end
+
+p search_in_rotated_sorted_array3([3, 1], 1)  # 1
+
+p search_in_rotated_sorted_array3([5,1,2,3,4], 1) # 1
+
+p search_in_rotated_sorted_array3([1], 1)  # 0

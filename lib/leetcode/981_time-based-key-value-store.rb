@@ -29,6 +29,18 @@ class TimeMap
 
     inner_array[left][1] <= timestamp ? inner_array[left][0] : ''
   end
+
+  def soft_delete(key, timestamp)
+    return nil if @map[key].nil?
+
+    inner_array = @map[key]
+
+    inner_array.each do |item|
+      if item[1] == timestamp
+        item.append("deleted")
+      end
+    end
+  end
 end
 
 kv = TimeMap.new
@@ -42,13 +54,16 @@ kv = TimeMap.new
 # p kv.map
 # p kv.get('foo', 5)
 
-kv.set('love', 'high', 10)
-kv.set('love', 'low', 20)
-kv.set('love', 'abc', 30)
+kv.set('love', 'v10', 10)
+kv.set('love', 'v20', 20)
+kv.set('love', 'v30', 30)
 
 p kv.map
 p kv.get('love', 5)
-p kv.get('love', 10)  # high
-p kv.get('love', 15)  # high
-p kv.get('love', 20)  # low
-p kv.get('love', 25)  # low
+p kv.get('love', 10)  # v10
+p kv.get('love', 15)  # v10
+p kv.get('love', 20)  # v20
+p kv.get('love', 25)  # v20
+
+p kv.soft_delete('love', 20)
+p kv.map

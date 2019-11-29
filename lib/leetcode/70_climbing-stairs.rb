@@ -13,7 +13,7 @@ end
 
 # bottom-up
 def climb_stairs2(n)
-  return 1 if (n == 1)
+  return 1 if n == 1
 
   dp = []
 

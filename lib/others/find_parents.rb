@@ -7,6 +7,7 @@ def find_nodes_with_zero_and_one_parents(parent_child_pairs)
 
     child_hash[child] << parent
   end
+
   zero_parents = []
   one_parent = []
 
@@ -24,7 +25,10 @@ def find_nodes_with_zero_and_one_parents(parent_child_pairs)
 end
 
 parent_child_pairs = [[1, 3], [2, 3], [3, 6], [5, 6], [5, 7], [4, 5], [4, 8], [8, 10], [11, 2]]
+
 find_nodes_with_zero_and_one_parents(parent_child_pairs)
+
+# ------------------------
 
 def has_common_ancestor(parent_child_pairs, c1, c2)
   child_hash = {}
@@ -34,7 +38,6 @@ def has_common_ancestor(parent_child_pairs, c1, c2)
 
     child_hash[child] << parent
   end
-  p child_hash
 
   c1_ancestors = find_ancestors(c1, child_hash)
   c2_ancestors = find_ancestors(c2, child_hash)
@@ -52,7 +55,7 @@ def find_ancestors(child, child_hash, ancestors = [])
   return ancestors
 end
 
-p has_common_ancestor(parent_child_pairs, 6, 8)
+p has_common_ancestor(parent_child_pairs, 6, 8)  # 4
 
 parent_child_pairs = [[1, 3], [2, 3], [3, 6], [5, 6], [5, 7], [4, 5], [4, 8], [8, 10], [11, 2]]
 
@@ -75,6 +78,7 @@ def find_earliest_ancestor(parent_child_pairs, child)
   queue = child_hash[child]
 
   earliest = nil
+
   while !queue.empty?
     earliest = queue.shift
 
