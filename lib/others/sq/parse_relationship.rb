@@ -1,6 +1,5 @@
 =begin
 Assume:
-
   - No CSV metacharacters in the names in our CSV (no "," or "\n")
   - Valid input.
   - 1:1 mapping between a person and a name.
@@ -19,6 +18,7 @@ CSV
 
 class FamilyRelationship
   attr_reader :relation
+
   def initialize(csv)
     @relation = {}
     lines = csv.split
@@ -41,9 +41,10 @@ Returns a symbol describing how name1 relates to name2. Valid values:
   def describe_relationship(name1, name2)
     name1_ancestors = []
     build_ancestor(name1, name1_ancestors)
+
     name2_index = name1_ancestors.index(name2)
     if name2_index
-      return name2_index < 2 ? :child : :offspring
+      return name2_index < 2 ? :child : :offspring  # index: 0, 1
     end
 
     name2_ancestors = []

@@ -11,24 +11,24 @@ class Person
     @friends << friend
   end
 
-  def display_network  # BSF
+  def display_network # BSF
     to_reset = [self]
 
     queue = [self]
 
-    self.visited = true  #图的链接是双向的，所以要记录是否已经访问过了。
+    self.visited = true # 图的链接是双向的，所以要记录是否已经访问过了。
 
     while queue.any?
       current_vertex = queue.shift
       puts current_vertex.name
 
       current_vertex.friends.each do |friend|
-        unless friend.visited
-          queue << friend
-          to_reset << friend
+        next if friend.visited
 
-          friend.visited = true
-        end
+        queue << friend
+        to_reset << friend
+
+        friend.visited = true
       end
     end
 
@@ -37,3 +37,22 @@ class Person
     end
   end
 end
+
+alice = Person.new('alice')
+bob = Person.new('bob')
+candy = Person.new('candy')
+derek = Person.new('derek')
+fred = Person.new('fred')
+helen = Person.new('helen')
+gina = Person.new('gina')
+
+alice.add_friend(bob)
+alice.add_friend(candy)
+alice.add_friend(derek)
+
+bob.add_friend(fred)
+fred.add_friend(helen)
+
+derek.add_friend(gina)
+
+alice.display_network

@@ -33,7 +33,7 @@ class LogParser
 
   def calculate_max_dyno(data_array)
     # max_dyno_hash = Hash.new(0)
-    data_array.each_with_object(Hash.new(0)) do |data, hash|  # Learn to use: each_with_object
+    data_array.each_with_object(Hash.new(0)) do |data, hash|  # Learn to use: #each_with_object
       hash[data[:dyno]] += 1
     end.max.first
 

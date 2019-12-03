@@ -97,8 +97,8 @@ class BinaryTreeBuilder
   end
 end
 
-root = BinaryTreeBuilder.build('1,2,5,3,null,null,null,null,4,null,null')
-BinaryTreeBuilder.print_tree root
+# root = BinaryTreeBuilder.build('1,2,5,3,null,null,null,null,4,null,null')
+# BinaryTreeBuilder.print_tree root
 
 # root = BinaryTreeBuilder.build('1,null,2,3')
 # BinaryTreeBuilder.print_tree root
