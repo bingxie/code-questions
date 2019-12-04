@@ -28,6 +28,7 @@ class City
 
       current_city.routes.each do |city, price|
         new_price = price + routes_from_city[current_city][0]
+
         if routes_from_city[city][0] > new_price
           routes_from_city[city] = [new_price, current_city]
         end
