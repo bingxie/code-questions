@@ -11,10 +11,11 @@ def min_meeting_rooms(intervals)
   pq = PriorityQueue.new(:min)
   pq.push(first.last)
 
-  intervals[1..intervals.size - 1].each do |interval|
+  intervals[1..-1].each do |interval|
     pq.pop if interval.first >= pq.peek
 
     pq.push interval.last
+    pp pq.items
   end
 
   pq.size
@@ -55,5 +56,8 @@ def min_meeting_rooms2(intervals)
 end
 
 intervals = [[0, 30],[5, 10],[15, 20]]
+
+# starts: [0, 5, 15]
+# ends: [10, 20, 30]
 
 p min_meeting_rooms2(intervals)
