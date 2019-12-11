@@ -1,3 +1,4 @@
+# Tags: Binary Tree, DFS, preorder, stack
 # Definition for a binary tree node.
 class TreeNode
     attr_accessor :val, :left, :right
@@ -22,6 +23,7 @@ def preorder_traversal(root)
     stack.push current_node.right if current_node.right  # 先把右节点放在栈下面，画图好理解
     stack.push current_node.left if current_node.left
   end
+
   results
 end
 

@@ -17,6 +17,7 @@ def inorder_traversal(root)
   stack = []
 
   current_node = root
+
   while current_node || !stack.empty?
     while current_node
       stack.push current_node
