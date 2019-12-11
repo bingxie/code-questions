@@ -12,7 +12,8 @@ class MinStack
   end
 
   def pop
-    @mins.pop if @stack.pop == @mins.last
+    value = @stack.pop
+    @mins.pop if value == @mins.last
   end
 
   def top
