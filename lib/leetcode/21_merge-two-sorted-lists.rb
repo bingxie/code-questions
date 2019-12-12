@@ -33,7 +33,7 @@ def merge_two_lists_recursion(l1, l2)
     l2
   elsif l2.nil?
     l1
-  elsif l1.val < l2.valG
+  elsif l1.val < l2.val
     l1.next = merge_two_lists_recursion(l1.next, l2)
     l1
   else

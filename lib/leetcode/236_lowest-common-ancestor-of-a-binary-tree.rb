@@ -35,7 +35,7 @@ def lowest_common_ancestor2(root, p, q)  # Iteration
       next
     end
 
-    return node
+    return node  # 不能继续在同一子树找到，当前的节点就是
   end
 end
 
