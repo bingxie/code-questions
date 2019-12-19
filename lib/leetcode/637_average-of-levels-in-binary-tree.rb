@@ -1,6 +1,7 @@
 # Tags: Binary Tree, BST, BFS, DFS
 require_relative '../data_structures/binary_trees/binary_tree_builder'
 
+# 这题可以参考facebook的demo视频
 # DFS
 def average_of_levels_dfs(root)
   result = {}
@@ -15,11 +16,9 @@ end
 def dfs_levels(node, result, depth = 0)
   return if node.nil?
 
-  if result[depth].nil?
-    result[depth] = [node.val.to_i, 1]
-  else
-    result[depth] = [(result[depth].first + node.val.to_i), result[depth].last + 1]
-  end
+  result[depth] ||= [node.val.to_i, 1]
+
+  result[depth] = [(result[depth].first + node.val.to_i), result[depth].last + 1]
 
   dfs_levels(node.left, result, depth + 1)
   dfs_levels(node.right, result, depth + 1)

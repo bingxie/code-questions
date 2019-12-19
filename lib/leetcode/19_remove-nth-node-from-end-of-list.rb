@@ -16,7 +16,7 @@ def remove_nth_from_end(head, n)
   # n = 2
   # 5 - 2 = 3, delete the next
   length = 0
-  dummy = ListNode.new(0)
+  dummy = ListNode.new(0)   # dummy node 方便处理删除头结点的情况
   dummy.next = head
 
   node = head

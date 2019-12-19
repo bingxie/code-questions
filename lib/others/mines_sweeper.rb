@@ -6,7 +6,7 @@
 
 class Board
   def initialize(row, col, mines)
-    @grids = Array.new(row) { Array.new(col, 'E') }
+    @grids = Array.new(row) { Array.new(col, 'E') }  # E代表空的没揭开的格子
 
     @mines = mines
     assign_mines(row, col)
@@ -26,7 +26,7 @@ class Board
       r = num / col
       c = num % col
 
-      @grids[r][c] = 'M' # mine
+      @grids[r][c] = 'M' # M代表mine
       assign_nums(r, c)
     end
   end

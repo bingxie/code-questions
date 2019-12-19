@@ -4,7 +4,8 @@ require 'set'
 # @return {Integer[][]}
 def three_sum(nums)
   return [] if nums.size < 3
-  return [[0, 0, 0]]if nums.uniq == [0]
+
+  return [[0, 0, 0]] if nums.uniq == [0]
 
   nums.sort!
   result = Set.new

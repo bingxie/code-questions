@@ -1,7 +1,7 @@
 class Solution
   def initialize
     @employees = {}
-    @manager_map = Hash.new {|h, key| h[key] = []}
+    @manager_map = Hash.new { |h, key| h[key] = [] }
   end
 
   def print_manager_employees(input)
@@ -36,7 +36,7 @@ class Solution
   end
 end
 
-class Employee < Struct.new(:id, :name, :manager_id)
+Employee = Struct.new(:id, :name, :manager_id) do
 end
 
 # 4: [1, 2]

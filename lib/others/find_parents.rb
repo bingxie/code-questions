@@ -12,13 +12,9 @@ def find_nodes_with_zero_and_one_parents(parent_child_pairs)
   one_parent = []
 
   child_hash.each do |child, parents|
-    if parents.empty?
-      zero_parents.push child
-    end
+    zero_parents.push child if parents.empty?
 
-    if parents.size == 1
-      one_parent.push child
-    end
+    one_parent.push child if parents.size == 1
   end
 
   p [zero_parents, one_parent]
@@ -34,7 +30,7 @@ def has_common_ancestor(parent_child_pairs, c1, c2)
   child_hash = {}
 
   parent_child_pairs.each do |parent, child|
-    child_hash[child] = [] unless child_hash[child]
+    child_hash[child] ||= []
 
     child_hash[child] << parent
   end
@@ -52,10 +48,11 @@ def find_ancestors(child, child_hash, ancestors = [])
     ancestors.push parent
     find_ancestors(parent, child_hash, ancestors)
   end
-  return ancestors
+
+  ancestors
 end
 
-p has_common_ancestor(parent_child_pairs, 6, 8)  # 4
+p has_common_ancestor(parent_child_pairs, 6, 8) # 4
 
 parent_child_pairs = [[1, 3], [2, 3], [3, 6], [5, 6], [5, 7], [4, 5], [4, 8], [8, 10], [11, 2]]
 
@@ -63,10 +60,11 @@ def make_child_hash(parent_child_pairs)
   child_hash = {}
 
   parent_child_pairs.each do |parent, child|
-    child_hash[child] = [] unless child_hash[child]
+    child_hash[child] ||= []
 
     child_hash[child] << parent
   end
+
   child_hash
 end
 
@@ -79,7 +77,7 @@ def find_earliest_ancestor(parent_child_pairs, child)
 
   earliest = nil
 
-  while !queue.empty?
+  until queue.empty?
     earliest = queue.shift
 
     child_hash[earliest]&.each do |parent|
