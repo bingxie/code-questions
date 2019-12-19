@@ -10,28 +10,26 @@
 # @return {Integer}
 
 def max_path_sum(root)
-  @max = Float::INFINITY
+  @max = -Float::INFINITY
   max_path_recursive(root)
-  return @max
+
+  @max
 end
 
 def max_path_recursive(node)
-  if node == nil
-      return 0
-  else
-      # possibilities
-      # 1. self
-      # 2. left + self
-      # 3. right + self
-      # 4 self + left + right
-      left = max_path_recursive(node.left)
-      right = max_path_recursive(node.right)
+  return 0 if node.nil?
 
-      max_path = [node.val, node.val+left, node.val+right].max
+  # possibilities
+  # 1. self
+  # 2. left + self
+  # 3. right + self
+  # 4 self + left + right
+  left = max_path_recursive(node.left)
+  right = max_path_recursive(node.right)
 
-      @max = [max_path, @max, node.val + left + right].max
+  max_path = [node.val, node.val + left, node.val + right].max
 
-      return max_path
-  end
+  @max = [max_path, @max, node.val + left + right].max
 
+  max_path
 end
