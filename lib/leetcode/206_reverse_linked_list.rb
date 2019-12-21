@@ -27,6 +27,7 @@ end
 
 def reverse_list2(head)
   return head if head.nil? || head.next.nil?
+
   # p head.next.val
   rl = reverse_list2(head.next)
 
