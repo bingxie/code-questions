@@ -9,6 +9,7 @@
 
 # @param {TreeNode} root
 # @return {TreeNode}
+# Approach1: Iterative + Queue BFS
 def invert_tree(root)
   return nil if root.nil?
 
@@ -24,6 +25,19 @@ def invert_tree(root)
     queue.push node.left if node.left
     queue.push node.right if node.right
   end
+
+  root
+end
+
+# Approach2: Recursive
+def invert_tree2(root)
+  return nil if root.nil?
+
+  new_right = invert_tree(root.right)
+  new_left = invert_tree(root.left)
+
+  root.left = new_right
+  root.right = new_left
 
   root
 end
