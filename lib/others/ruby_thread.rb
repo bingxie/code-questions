@@ -20,6 +20,7 @@ end
 
 door_lock = DoorLock.new(true)
 
+# 5个线程,只有一个可以unlock the door
 5.times.map do
   Thread.new do
     door_lock.unlock! unless door_lock.open?
