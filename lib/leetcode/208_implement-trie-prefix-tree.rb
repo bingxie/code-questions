@@ -1,3 +1,4 @@
+# also see: https://github.com/bephrem1/backtobackswe/blob/master/Trees%2C%20Binary%20Trees%2C%20%26%20Binary%20Search%20Trees/ImplementATrie/ImplementATrie.java
 class TrieNode < Hash
   attr_accessor :is_end
   def initialize(is_end = false)
