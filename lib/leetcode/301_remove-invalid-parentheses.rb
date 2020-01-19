@@ -20,9 +20,7 @@ def remove(s, prev_i, prev_j, par)
     next if counter >= 0
 
     (prev_j..i).each do |j|
-      if s[j] == par[1] && (s[j-1] != par[1] || j == prev_j)
-        remove(s[0...j] + s[(j+1)..-1], i, j, par)
-      end
+      remove(s[0...j] + s[(j + 1)..-1], i, j, par) if s[j] == par[1] && (s[j - 1] != par[1] || j == prev_j)
     end
 
     return
@@ -30,7 +28,7 @@ def remove(s, prev_i, prev_j, par)
   p "s: #{s}"
   r_s = s.reverse
   if par[0] == '('
-    remove(r_s, 0, 0, [')','('])
+    remove(r_s, 0, 0, [')', '('])
   else
     @results << r_s
   end
@@ -39,5 +37,5 @@ end
 s = '(()(()'
 p remove_invalid_parentheses(s)
 
-s = "()())()"
+s = '()())()'
 # p remove_invalid_parentheses(s)
