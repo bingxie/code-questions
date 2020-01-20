@@ -1,7 +1,8 @@
+# https://leetcode.com/problems/meeting-rooms/
 # @param {Integer[][]} intervals
 # @return {Boolean}
 def can_attend_meetings(intervals)
-  sorted_intervals = intervals.sort_by do |st, et|
+  sorted_intervals = intervals.sort_by do |st, _et|
     st
   end
   first_interval = sorted_intervals.first
@@ -16,5 +17,5 @@ def can_attend_meetings(intervals)
   true
 end
 
-p can_attend_meetings([[0,30],[5,10],[15,20]])  # false
-p can_attend_meetings([[7,10],[2,4]])  # true
+p can_attend_meetings([[0, 30], [5, 10], [15, 20]]) # false
+p can_attend_meetings([[7, 10], [2, 4]]) # true

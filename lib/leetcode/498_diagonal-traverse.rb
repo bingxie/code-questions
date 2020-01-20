@@ -17,7 +17,7 @@ def find_diagonal_order(matrix)
   total.times do |_k|
     result.push matrix[i][j]
 
-    if (i + j).even?
+    if (i + j).even?  # 向上走
       if j == col_size - 1  # 换行
         i += 1
       elsif i == 0
@@ -26,7 +26,7 @@ def find_diagonal_order(matrix)
         i -= 1
         j += 1
       end
-    else # odd
+    else # odd  向下走
       if i == row_size - 1
         j += 1
       elsif j == 0
