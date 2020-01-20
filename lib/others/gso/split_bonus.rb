@@ -1,8 +1,8 @@
 class SplitBonus
   attr_reader :result
 
-  def initialize()
-    @bonus_cap = {A: 100, B: 150, C: 200, D: 500, E: 600}
+  def initialize
+    @bonus_cap = { A: 100, B: 150, C: 200, D: 500, E: 600 }
     @result = {}
   end
 
@@ -16,17 +16,16 @@ class SplitBonus
 
     avg = bonus / persons.size
 
-    split_by_avg = persons.all? {|p| @bonus_cap[p] >= avg}
-    if split_by_avg  # Base case
-      return avg_split(bonus, persons)
-    end
+    split_by_avg = persons.all? { |p| @bonus_cap[p] >= avg }
+
+    return avg_split(bonus, persons) if split_by_avg # Base case
 
     remain_bonus = bonus
     remain_person = []
     persons.each do |p|
       if @bonus_cap[p] <= avg
         @result[p] = @bonus_cap[p]
-        remain_bonus = remain_bonus - @bonus_cap[p]
+        remain_bonus -= @bonus_cap[p]
       else
         remain_person << p
       end
@@ -43,6 +42,7 @@ class SplitBonus
       result[person] = avg
     end
 
+    # 整除后余下的零头给第一个人
     first_person = persons.first
     @result[first_person] = @result[first_person] + remainder if remainder > 0
   end

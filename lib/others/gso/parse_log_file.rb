@@ -69,7 +69,7 @@ class LogParser
   private
 
   def get_number(str)
-    str.gsub(/\D/, '').to_i  # use gsub
+    str.gsub(/\D/, '').to_i  # use gsub 替换非数字为空白
   end
 end
 

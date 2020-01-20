@@ -8,6 +8,7 @@ class ConnectFour
   def parse(string)
     extended_string = extend_string(string)
     pp extended_string
+    # 根据展开的字符串, 初始化board
     @board.each_with_index do |row, i|
       row.each_with_index do |_value, j|
         index =  i * 7 + j
@@ -18,6 +19,7 @@ class ConnectFour
     pp @board
   end
 
+  # 把输入的字符串展开
   def extend_string(string)
     str = ""
     number = nil
@@ -38,7 +40,6 @@ class ConnectFour
 
   def valid?
     (0..6).each do |j|
-      # col_string = ""
       not_space = false
       (0..5).each do |i|
         if not_space
@@ -60,6 +61,8 @@ cf = ConnectFour.new
 cf.parse('9_r4_brbrbr_3b2rb_b2r2br_r2b3rb')
 
 p cf.valid?
+
+p cf.board.flatten
 
 p cf.board.flatten.count {|x| x == 'b'}  # count check
 p cf.board.flatten.count {|x| x == 'r'}

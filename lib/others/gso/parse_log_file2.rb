@@ -7,15 +7,15 @@ class LogParser
   end
 
   def parse_log(log)
-    logs = log.split("\n")
+    lines = log.split("\n")
 
-    logs.each do |line|
+    lines.each do |line|
       segments = line.split(' ')
       path = segments[4].split('=')[1].gsub(/\d+/, '{user_id}')
-      connect = segments[8].split('=')[1][0..-3].to_i # str.gsub(/\D/, '').to_i
-      service = segments[9].split('=')[1][0..-3].to_i
+      connect_time = segments[8].split('=')[1][0..-3].to_i # str.gsub(/\D/, '').to_i
+      service_time = segments[9].split('=')[1][0..-3].to_i
 
-      response_time = connect + service
+      response_time = connect_time + service_time
 
       @logs_hash[path].push response_time
     end

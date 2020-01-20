@@ -1,4 +1,17 @@
+# Tags: Backtracking,
+
+# 解决Backtracing的通用方法
+# 1. Choice
+#    place a '(' or ')'
+# 2. Constrains
+#    a. we can not close until we open
+#    b. My count of left opens matters
+# 3. Goal
+#    n * 2 placements
+
 # Also see: https://github.com/bephrem1/backtobackswe/blob/master/Dynamic%20Programming%2C%20Recursion%2C%20%26%20Backtracking/GenerateNMatchedParenStrings/GenerateNMatchedParenStrings.java
+
+
 # @param {Integer} n
 # @return {String[]}
 # Approach 2: Backtracking
