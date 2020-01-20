@@ -32,7 +32,7 @@ p length_of_longest_substring(str) # 3
 
 # @param {String} s
 # @return {Integer}
-# Approach 2: Sliding Window
+# Approach 2: Sliding Window, two pointers
 require 'set'
 def length_of_longest_substring2(str)
   set = Set.new

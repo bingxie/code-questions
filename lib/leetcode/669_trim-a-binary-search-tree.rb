@@ -1,4 +1,4 @@
-# Tags: BST, recursion
+# Tags: Tree, BST, recursion
 
 # Definition for a binary tree node.
 # class TreeNode
