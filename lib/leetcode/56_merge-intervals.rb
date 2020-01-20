@@ -29,3 +29,30 @@ p merge(intervals) # [[1,6],[8,10],[15,18]]
 
 intervals = [[1,4],[4,5]]
 p merge(intervals)  # [[1,5]]
+
+
+# @param {Integer[][]} intervals
+# @return {Integer[][]}
+def merge2(intervals)
+  return [] if intervals.empty?
+
+  intervals.sort!
+
+  results = [intervals.first]
+
+  intervals[1..-1].each do |interval|
+    new_start = interval[0]
+    new_end = interval[1]
+
+    current_end = results.last[1]
+
+    if new_start > current_end
+      results.push [new_start, new_end]
+    else
+      tmp_end = [new_end, current_end].max
+      results.last[1] = tmp_end
+    end
+  end
+
+  results
+end
