@@ -1,4 +1,4 @@
-# Tags: Union Find, Disjoint set union
+# Tags: #Union Find, #Disjoint set union
 
 # https://leetcode.com/articles/redundant-connection/
 

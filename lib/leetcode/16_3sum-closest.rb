@@ -1,4 +1,4 @@
-# Tags: 3sum sum closest
+# Tags: #3sum, #sum, #closest
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer}

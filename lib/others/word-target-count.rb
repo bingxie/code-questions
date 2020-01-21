@@ -1,3 +1,4 @@
+# Tags: #Hash
 # abc bcd def abc bcd efg
 
 def word_target_count(sentence, target)

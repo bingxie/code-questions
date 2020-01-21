@@ -1,4 +1,4 @@
-# Tags: Binary Tree, DFS, preorder, stack
+# Tags: #Binary Tree, #DFS, #Preorder, #Stack
 # Definition for a binary tree node.
 class TreeNode
     attr_accessor :val, :left, :right

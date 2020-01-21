@@ -4,7 +4,7 @@ class Solution
     @manager_map = Hash.new { |h, key| h[key] = [] }
   end
 
-  def print_manager_employees(input)
+  def print_manager_employees_tree(input)
     parse_input(input)
 
     @manager_map['0'].each do |top_manager|
@@ -36,12 +36,12 @@ class Solution
   end
 end
 
-Employee = Struct.new(:id, :name, :manager_id) do
-end
+Employee = Struct.new(:id, :name, :manager_id)
 
 # 4: [1, 2]
 # 0: [4]
 # 1: [3]
 
+# format: employee_id:employee_name:manager_id
 input = '1:Max:4, 4:Ann:0, 2:Jim:4, 3:Tom:1'
-Solution.new.print_manager_employees(input)
+Solution.new.print_manager_employees_tree(input)
