@@ -13,12 +13,14 @@ def merge_two_lists(l1, l2)
   dummy = curr = ListNode.new(nil)
 
   while l1 || l2
-      if (l1 && l2 && l1.val < l2.val) || !l2
-          curr.next, l1 = l1, l1.next
-      elsif (l1 && l2) || !l1
-          curr.next, l2 = l2, l2.next
-      end
-      curr = curr.next
+    if (l1 && l2 && l1.val < l2.val) || !l2
+      curr.next = l1
+      l1 = l1.next
+    elsif (l1 && l2) || !l1
+      curr.next = l2
+      l2 = l2.next
+    end
+    curr = curr.next
   end
 
   dummy.next
