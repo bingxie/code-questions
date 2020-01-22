@@ -1,4 +1,6 @@
 # Topic: binary search
+
+# https://leetcode.com/problems/search-in-rotated-sorted-array/
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer}
@@ -82,6 +84,9 @@ p search_in_rotated_sorted_array2([5, 1, 2, 3, 4], 1) # 1
 p search_in_rotated_sorted_array2([1], 1) # 0
 
 # -----------
+# 分步骤, 扫描两遍的方法.
+# 1. 先找到rotated的index
+# 2. 然后当成两个分别排好序的数组,进行binary search
 def search_in_rotated_sorted_array3(nums, target)
   return -1 if nums.empty?
 
