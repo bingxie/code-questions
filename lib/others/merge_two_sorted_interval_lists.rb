@@ -16,7 +16,7 @@
 def merge_two_sorted_interval_lists(list1, list2)
   results = []
 
-  index1= 0
+  index1 = 0
   index2 = 0
 
   if list1.first[0] < list2.first[0]
@@ -32,21 +32,20 @@ def merge_two_sorted_interval_lists(list1, list2)
     interval2 = list2[index2]
     prev = results.last
 
-
     if index2 == list2.size || (interval1 && interval2 && interval1[0] < interval2[0])
       # merge next list1 interval
-      if prev[1] >= interval1[0] # 注意等于
-        prev[1] = [prev[1], interval1[1]].max
-      else
+      if prev[1] < interval1[0]
         results.push interval1
+      else
+        prev[1] = [prev[1], interval1[1]].max
       end
       index1 += 1
     else
       # merge next list2 interval
-      if prev[1] >= interval2[0] # 注意等于
-        prev[1] = [prev[1], interval2[1]].max
-      else
+      if prev[1] < interval2[0]
         results.push interval2
+      else
+        prev[1] = [prev[1], interval2[1]].max
       end
       index2 += 1
     end
