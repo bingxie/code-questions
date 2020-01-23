@@ -34,7 +34,7 @@ end
 # puts search_in_rotated_sorted_array(nums, 6)  # 2
 # puts search_in_rotated_sorted_array(nums, 2)  # 6
 
-# 思路：从两头往中间逼近, 二分后总有一半是ascending的
+# 思路：从两头往中间逼近, 二分后总有一半是ascending的, 只需要扫描一遍
 def search_in_rotated_sorted_array2(nums, target)
   floor = 0
   ceiling = nums.length - 1

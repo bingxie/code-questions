@@ -1,3 +1,4 @@
+# Tags: #Double Linked List, #Hash, #LRU #Cache
 class Node
   attr_accessor :key, :value, :prev, :next
 
@@ -12,6 +13,7 @@ end
 
 class DoubleLinkedList
   attr_accessor :head, :tail
+
   def initialize
     @head = Node.new
     @tail = Node.new
@@ -38,11 +40,13 @@ class DoubleLinkedList
     node
   end
 
+  # 用于保证最近使用的在最前面
   def move_to_head(node)
     remove_node(node)
     add_node(node)
   end
 
+  # 超过capacity之后,总是从最后删除
   def pop_tail
     remove_node(tail.prev)
   end
@@ -58,9 +62,7 @@ class LRUCache
   def get(key)
     node = @cache[key]
 
-    if node.nil?
-      return -1
-    end
+    return -1 if node.nil?
 
     @list.move_to_head(node)
 
@@ -76,7 +78,7 @@ class LRUCache
       @cache[key] = node
       @list.add_node(node)
     else
-      node.value = value       # update the value
+      node.value = value # update the value
       @list.move_to_head(node)
     end
 

@@ -16,14 +16,11 @@
 def trim_bst(root, l, r)
   return nil if root.nil?
 
-  if root.val >= l && root.val <= r
-    root.left = trim_bst(root.left, l, r)
-    root.right = trim_bst(root.right, l, r)
-  elsif root.val < l
-    root = trim_bst(root.right, l, r)
-  elsif root.val > r
-    root = trim_bst(root.left, l, r)
-  end
+  return trim_bst(root.right, l, r) if root.val < l
+  return trim_bst(root.left, l, r) if root.val > r
+
+  root.left = trim_bst(root.left, l, r)
+  root.right = trim_bst(root.right, l, r)
 
   root
 end

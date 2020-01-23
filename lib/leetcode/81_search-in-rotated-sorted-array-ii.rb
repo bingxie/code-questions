@@ -13,19 +13,19 @@ def search_in_rotated_sorted_array_ii(nums, target)
     return true if nums[mid] == target
 
     # 当floor或者ceiling 跟mid相同是，移动floor或者ceiling
-    if (floor!= mid && nums[floor] == nums[mid])
+    if floor != mid && nums[floor] == nums[mid]
       floor += 1
       next
-    elsif (ceiling != mid && nums[ceiling] == nums[mid])
+    elsif ceiling != mid && nums[ceiling] == nums[mid]
       ceiling -= 1
       next
     end
 
-    if nums[floor] < nums[mid]  # left part is ascending
+    if nums[floor] < nums[mid] # left part is ascending
       return true if nums[floor] == target
 
-      if nums[floor] < target && target < nums[mid]   # target in left part
-        ceiling = mid -1
+      if nums[floor] < target && target < nums[mid] # target in left part
+        ceiling = mid - 1
       else
         floor = mid + 1
       end
@@ -35,7 +35,7 @@ def search_in_rotated_sorted_array_ii(nums, target)
       if nums[mid] < target && target < nums[ceiling]
         floor = mid + 1
       else
-        ceiling = mid -1
+        ceiling = mid - 1
       end
     end
   end
@@ -47,7 +47,7 @@ end
 # puts search_in_rotated_sorted_array_ii(nums, 0)  # true
 # puts search_in_rotated_sorted_array_ii(nums, 3)  # false
 
-nums = [1,3]
+nums = [1, 3]
 puts search_in_rotated_sorted_array_ii(nums, 3) # true
 
 # puts search_in_rotated_sorted_array_ii([1,1], 2) # false
@@ -55,4 +55,4 @@ puts search_in_rotated_sorted_array_ii(nums, 3) # true
 # puts search_in_rotated_sorted_array_ii([3,1,1], 3) # true
 
 # puts search_in_rotated_sorted_array_ii([1,1,3], 3) # true
-#puts search_in_rotated_sorted_array_ii([1,3,5], 5) # true
+# puts search_in_rotated_sorted_array_ii([1,3,5], 5) # true
