@@ -35,7 +35,6 @@ class RateLimiter
   REQUEST_LIMIT = 5
   TIME_LIMIT = 60 # second
 
-
   def initialize
     @request_hash = {}
   end
@@ -45,9 +44,7 @@ class RateLimiter
 
     request_queue = @request_hash[client_id]
 
-    while request_queue.size > 0 && (Time.now - request_queue.peek) >= TIME_LIMIT
-      request_queue.pop
-    end
+    request_queue.pop while !request_queue.empty? && (Time.now - request_queue.peek) >= TIME_LIMIT
 
     if request_queue.size < REQUEST_LIMIT
       request_queue.push Time.now
@@ -66,4 +63,4 @@ threads = []
     p limiter.allowed?('c_1')
   end
 end
-threads.each {|t| t.join }
+threads.each(&:join)

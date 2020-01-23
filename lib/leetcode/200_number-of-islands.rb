@@ -1,7 +1,9 @@
-# Tags: BFS, DFS, Graph, Matrix
+# Tags: #BFS, #DFS, #Graph, #Matrix
 # @param {Character[][]} grid
 # @return {Integer}
-def num_islands(grid) # DFS
+
+# DFS
+def num_islands(grid)
   return 0 if grid.empty?
 
   count = 0
@@ -9,7 +11,7 @@ def num_islands(grid) # DFS
   0.upto(grid.size - 1) do |i|
     0.upto(grid.first.size - 1) do |j|
       if grid[i][j] == '1'
-        dfs(i, j, grid)  # dfs遍历所有 1 node
+        dfs(i, j, grid) # dfs遍历所有 1 node
         count += 1
       end
     end
@@ -20,7 +22,7 @@ end
 def dfs(i, j, grid)
   return if i < 0 || j < 0 || i >= grid.size || j >= grid.first.size || grid[i][j] == '0'
 
-  grid[i][j] = '0'  # visited mark to 0
+  grid[i][j] = '0' # visited mark to 0
 
   dfs(i - 1, j, grid)
   dfs(i, j - 1, grid)
@@ -34,7 +36,8 @@ p num_islands(grid)
 
 ##########################################
 
-def num_islands2(grid)   # BFS
+# BFS
+def num_islands2(grid)
   return 0 if grid.empty?
 
   count = 0
@@ -54,7 +57,7 @@ def bfs(i, j, grid)
   directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
 
   queue = Queue.new
-  queue.push([i, j])  # 也可以用两个queue，比如： row_queue, col_queue
+  queue.push([i, j]) # 也可以用两个queue，比如： row_queue, col_queue
 
   until queue.empty?
     row, col = queue.pop
