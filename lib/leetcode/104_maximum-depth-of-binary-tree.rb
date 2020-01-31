@@ -1,26 +1,29 @@
-# Binary Tree, DFS
+# Tags: #Binary Tree, #DFS
 
 # Definition for a binary tree node.
 class TreeNode
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left, @right = nil, nil
-    end
+  attr_accessor :val, :left, :right
+  def initialize(val)
+    @val = val
+    @left = nil
+    @right = nil
+  end
 end
 
 # @param {TreeNode} root
 # @return {Integer}
-def max_depth(root)  # Recursion
+# Recursion
+def max_depth(root)
   return 0 if root.nil?
 
   left_height = max_depth(root.left)
   right_height = max_depth(root.right)
 
-  [left_height, right_height].max + 1  # 没进入一层都要加1
+  [left_height, right_height].max + 1 # 没进入一层都要加1
 end
 
-def max_depth2(root)  # Iteration
+# Iteration
+def max_depth2(root)
   return 0 if root.nil?
 
   max_depth = 0

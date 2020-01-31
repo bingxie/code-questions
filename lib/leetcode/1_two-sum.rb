@@ -3,8 +3,10 @@
 # @return {Integer[]}
 def two_sum(nums, target)
   nums_hash = {}
+
   nums.each_with_index do |num, index|
     val = target - num
+
     return [nums_hash[val], index] if nums_hash[val]
 
     nums_hash[num] = index
