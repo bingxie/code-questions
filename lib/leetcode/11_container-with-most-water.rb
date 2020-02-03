@@ -20,6 +20,6 @@ def max_area(height)
   result
 end
 
-height = [1,8,6,2,5,4,8,3,7]
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
 
 p max_area(height)
