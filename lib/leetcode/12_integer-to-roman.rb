@@ -1,5 +1,5 @@
 def int_to_roman(num)
-  stack = [
+  queue = [
     [1, 'I'],
     [4, 'IV'],
     [5, 'V'],
@@ -18,7 +18,7 @@ def int_to_roman(num)
   res = ''
 
   while num > 0
-    tmp_num, roman = stack.last
+    tmp_num, roman = queue.last
 
     return res + roman if num == tmp_num
 
@@ -26,7 +26,7 @@ def int_to_roman(num)
       num -= tmp_num
       res += roman
     else
-      stack.pop
+      queue.pop
     end
   end
 
