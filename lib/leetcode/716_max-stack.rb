@@ -29,7 +29,7 @@ class MaxStack
     buffer = []
     buffer.push(pop) while top != max
 
-    pop # pop the max
+    pop # pop the max on items
 
     push(buffer.pop) until buffer.empty?
 

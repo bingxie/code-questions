@@ -7,6 +7,7 @@ require_relative '../data_structures/binary_trees/binary_tree_builder'
 # @return {TreeNode}
 def lowest_common_ancestor(root, p, q) # Iterative Approach
   node = root
+
   while node
     parent_val = node.val
 
@@ -30,6 +31,20 @@ def lowest_common_ancestor2(root, p, q) # Recursive Approach
   else
     return root
   end
+end
+
+# 我自己的想出来实现的方法
+def lowest_common_ancestor3(root, p, q)
+  return nil if root.nil?
+
+  return lowest_common_ancestor(root, q, p) if p.val > q.val
+
+  return root if root.val > p.val && root.val < q.val
+
+  return p if root.val == p.val
+  return q if root.val == q.val
+
+  lowest_common_ancestor(root.left, p, q) || lowest_common_ancestor(root.right, p, q)
 end
 
 values = '6,2,8,0,4,7,9,null,null,3,5'
