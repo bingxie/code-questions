@@ -70,7 +70,7 @@ def bfs(i, j, grid)
 
       if new_r >= 0 && new_c >= 0 && new_r < grid.size && new_c < grid.first.size && grid[new_r][new_c] == '1'
         queue.push([new_r, new_c])
-        # grid[new_r][new_c] = '0' # mark as visited
+        grid[new_r][new_c] = '0' # mark as visited
       end
     end
   end

@@ -1,3 +1,4 @@
+require_relative '../data_structures/binary_trees/binary_tree_builder'
 require_relative '../data_structures/binary_trees/tree_node'
 # Encodes a tree to a single string.
 #
@@ -81,3 +82,35 @@ p serialize2(node1)
 
 # tree_string = "1,2,3,None,None,4,None,None,5,None,None,"
 # p deserialize(tree_string)
+puts '----------------------'
+
+# 非常精炼的DFS的方法，树的问题，关注当前的节点
+def serialize3(root)
+  return 'X' if root.nil?
+
+  left_str = serialize3(root.left)
+  right_str = serialize3(root.right)
+
+  "#{root.val},#{left_str},#{right_str}"
+end
+
+def deserialize3(string)
+  queue = string.split(',')
+  deserialize3_helper(queue)
+end
+
+def deserialize3_helper(queue)
+  val = queue.shift
+
+  return nil if val == 'X'
+
+  node = TreeNode.new(val)
+
+  node.left = deserialize3_helper(queue)
+  node.right = deserialize3_helper(queue)
+
+  node
+end
+
+p serialize3(node1)
+BinaryTreeBuilder.print_tree deserialize3(serialize3(node1))

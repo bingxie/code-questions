@@ -33,6 +33,17 @@ def inorder_traversal(root)
   result
 end
 
+# Recursion
+def inorder_traversal2(root, result = [])
+  return result if root.nil?
+
+  inorder_traversal(root.left, result)
+  result.push root.val
+  inorder_traversal(root.right, result)
+
+  result
+end
+
 root = TreeNode.new(2)
 node1 = TreeNode.new(1)
 node2 = TreeNode.new(3)

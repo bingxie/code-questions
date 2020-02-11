@@ -1,18 +1,28 @@
 class RateQueue
-  def initialize(size)
-    @size = size
-    @queue = Array.new(size, Time.at(0))
+  def initialize(capacity)
+    @capacity = capacity
+    @queue = Array.new(capacity, Time.at(0))
     @mutex = Mutex.new
   end
 
   def push(timestamp)
     @mutex.synchronize do
+      while size >= @capacity
+        sleep(1)
+      end
+
+      sleep(1)  # only one thread can push
       @queue.push timestamp
     end
   end
 
   def pop
     @mutex.synchronize do
+      # blocked pop
+      # while size <= 0
+      #   sleep(1)
+      # end
+
       @queue.shift
     end
   end
@@ -44,7 +54,7 @@ class RateLimiter
 
     request_queue = @request_hash[client_id]
 
-    request_queue.pop while !request_queue.empty? && (Time.now - request_queue.peek) >= TIME_LIMIT
+    request_queue.pop while request_queue.size > 0 && (Time.now - request_queue.peek) >= TIME_LIMIT
 
     if request_queue.size < REQUEST_LIMIT
       request_queue.push Time.now
