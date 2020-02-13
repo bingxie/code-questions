@@ -96,6 +96,7 @@ class BinaryTreeBuilder
     [left_height, right_height].max + 1 # 没进入一层都要加1
   end
 end
+# require_relative '../data_structures/binary_trees/binary_tree_builder'
 
 # root = BinaryTreeBuilder.build('1,2,5,3,null,null,null,null,4,null,null')
 # BinaryTreeBuilder.print_tree root
