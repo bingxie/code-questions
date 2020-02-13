@@ -19,6 +19,7 @@ end
 
 def sum_helper(list, depth)
   sum = 0
+
   list.each do |ni|
     sum += if ni.is_integer
              ni.get_integer * depth

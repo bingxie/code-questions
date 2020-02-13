@@ -1,15 +1,16 @@
+# https://youtu.be/i-SKeOcBwko
+
 def insert_sort(array)
   (1...array.length).each do |index|
-    position = index
+    hole = index
     temp_value = array[index]
 
-    while position > 0 && array[position - 1] > temp_value
-      array[position] = array[position - 1]
-      position -= 1
+    while hole > 0 && array[hole - 1] > temp_value
+      array[hole] = array[hole - 1]
+      hole -= 1
     end
 
-    array[position] = temp_value
-    p array
+    array[hole] = temp_value
   end
 end
 
