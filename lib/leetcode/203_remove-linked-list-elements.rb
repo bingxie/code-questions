@@ -11,14 +11,12 @@ end
 def remove_elements(head, val)
   return nil if head.nil?
 
-  previous = ListNode.new(0)
-  previous.next = head
+  dummy = ListNode.new(0)
+  dummy.next = head
+
+  previous = dummy
   current = head
   while current
-    if head.val == val
-      head = head.next
-    end
-
     if current.val == val
       previous.next = current.next
     else
@@ -26,11 +24,13 @@ def remove_elements(head, val)
     end
     current = current.next
   end
-  head
+
+  dummy.next
 end
 
 def remove_elements2(head, val)
   return nil if head.nil?
+
   node = head
   while node.next != nil
     if node.next.val == val

@@ -22,3 +22,13 @@ a = 'abcde'
 b = 'cdeab'
 
 p rotate_string(a, b)
+
+a = 'abc'
+b = 'abc'
+
+p rotate_string(a, b)
+
+a = 'ab'
+b = 'a'
+
+p rotate_string(a, b)

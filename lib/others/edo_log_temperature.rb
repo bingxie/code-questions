@@ -47,21 +47,20 @@ class LogTemperature
   def update_max(temperature, removed_temp)
     if @max_temp.nil?
       @max_temp = temperature
-    else
-      # worse case: 当所有的问题都是一直在下降的情况，每一次都需要重新计算max
-      # removed_temp != temperature 用于处理队列中温度都是一样的
-      if removed_temp && removed_temp == @max_temp && removed_temp != temperature
-        @max_temp = @queue.max
-      else
-        @max_temp = [@max_temp, temperature].max
-      end
+      return
     end
+
+    # worse case: 当所有的问题都是一直在下降的情况，每一次都需要重新计算max
+    # removed_temp != temperature 用于处理队列中温度都是一样的
+    @max_temp = if removed_temp && removed_temp == @max_temp && removed_temp != temperature
+                  @queue.max
+                else
+                  [@max_temp, temperature].max
+                end
   end
 
   def update_avg(temperature, removed_temp)
-    if removed_temp
-      @temp_total -= removed_temp
-    end
+    @temp_total -= removed_temp if removed_temp
 
     @temp_total += temperature
 

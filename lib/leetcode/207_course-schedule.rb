@@ -60,31 +60,37 @@ p can_finish(2, [[1, 0], [0, 1]])
 # @param {Integer[][]} prerequisites
 # @return {Boolean}
 def can_finish2(num_courses, prerequisites)
-  map = {}
-  degree = {}
+  # TODO: rename
+  next_courses = {}
+  dependencies = {}
   num_courses.times do |course|
-    degree[course] = 0
+    dependencies[course] = 0
   end
 
   prerequisites.each do |course, prereq|
-    map[prereq] ||= Set.new
-    map[prereq].add(course)
-    degree[course] += 1
+    next_courses[prereq] ||= Set.new
+    next_courses[prereq].add(course)
+    dependencies[course] += 1
   end
+
+  p next_courses
+  p dependencies
 
   count = 0
   queue = []
-  degree.each do |course, degrees|
-    queue << course if degrees == 0
+
+  dependencies.each do |course, total|
+    queue << course if total == 0
   end
+
   until queue.empty?
     prereq = queue.shift
     count += 1
-    next unless map[prereq]
+    next unless next_courses[prereq]
 
-    map[prereq].each do |course|
-      degree[course] -= 1
-      queue << course if degree[course] == 0
+    next_courses[prereq].each do |course|
+      dependencies[course] -= 1
+      queue << course if dependencies[course] == 0
     end
   end
 

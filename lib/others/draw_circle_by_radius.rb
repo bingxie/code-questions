@@ -1,5 +1,7 @@
 require 'set';
 
+# 类似的一个Facebook的面试题： https://leetcode.com/discuss/interview-question/513389/facebook-phone-screen-draw-a-circle
+
 def draw_circle(radius)
   result = []
   (0..radius * 2).each do |r|
@@ -28,7 +30,7 @@ def draw_circle2(radius)
   count = 0
   (-radius..radius).each do |x|
     (-radius..radius).each do |y|
-      if (x * x + y * y) <= radius * radius + radius
+      if (x * x + y * y) <= radius * radius + radius  # + radius 进行优化
         result.push [x, y]
         print '*'
       else

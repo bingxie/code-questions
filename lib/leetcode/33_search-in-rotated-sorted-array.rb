@@ -42,7 +42,7 @@ def search_in_rotated_sorted_array2(nums, target)
   while floor <= ceiling
     mid = floor + (ceiling - floor) / 2
 
-    return mid if nums[mid] == target
+    return mid if nums[mid] == target  # 检查mid
 
     if nums[floor] < nums[mid] # left part is ascending
       return floor if nums[floor] == target ### 检查floor，可以快速返回
