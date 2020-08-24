@@ -35,12 +35,12 @@ def search_range(nums, target)
       left = mid + 1
     end
   end
-  last = left -1 if nums[left - 1] == target
+  last = left - 1 if nums[left - 1] == target
 
   [first, last]
 end
 
-nums = [5,7,7,8,8,10]
+nums = [5,7,7,8,8,9,10]
 target = 8
 
 # 6 (0..5)
@@ -48,6 +48,8 @@ target = 8
 # left=3 right = 5 , mid = 4, min == 8,
 
 p search_range(nums, target) # [3, 4]
+
+p search_range(nums, 9) # [5, 5]
 
 p search_range(nums, 6) # [-1, -1]
 
@@ -69,7 +71,7 @@ def find_index(nums, target, left)
 
   while low < high
     mid = low + (high - low) / 2
-    p "#{low} #{high} #{mid}"
+    # p "#{low} #{high} #{mid}"
 
     if (nums[mid] > target || (left && target == nums[mid]))
       high = mid

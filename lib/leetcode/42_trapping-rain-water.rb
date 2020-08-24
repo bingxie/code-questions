@@ -5,8 +5,10 @@ def trap(height)
   right = height.size - 1
 
   result = 0
+
   left_max = 0
   right_max = 0
+
   while left < right
     if height[left] < height[right]
       height[left] >= left_max ? left_max = height[left] : result += (left_max - height[left])

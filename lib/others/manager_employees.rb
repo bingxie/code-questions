@@ -1,3 +1,4 @@
+# Tags: Chime
 class Solution
   def initialize
     @employees = {}
@@ -9,7 +10,7 @@ class Solution
 
     @manager_map['0'].each do |top_manager|
       puts @employees[top_manager].name
-      print_members(top_manager, '-')
+      print_members(top_manager)
     end
   end
 
@@ -27,11 +28,13 @@ class Solution
     end
   end
 
-  def print_members(manager_id, prefix)
-    @manager_map[manager_id]&.each do |employee_id|
-      puts "#{prefix} #{@employees[employee_id].name}"
+  def print_members(manager_id, level = 1)
+    prefix = '-'
 
-      print_members(employee_id, prefix * 2)
+    @manager_map[manager_id]&.each do |employee_id|
+      puts "#{prefix * level} #{@employees[employee_id].name}"
+
+      print_members(employee_id, level + 1)
     end
   end
 end
